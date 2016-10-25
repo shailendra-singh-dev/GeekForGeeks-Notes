@@ -1,4 +1,4 @@
-Find the sum of digits
+﻿Find the sum of digits
 
 Add remainders after each division.
 
@@ -51,8 +51,65 @@ public static ArrayList<Integer> getAllPrimeNumbers(int number) {
 	return primeNumbers;
     }
 
+Convert string to integer.
+
+Iterate through each charaacter, fetch it's integer value using    ch-'0'  and make sum of all integer values.
+private static void stringToInt(String str) {
+    char[] array = str.toCharArray();
+    int num = 0;
+    for (char ch : array) {
+      num = ch - '0';
+      num += num * 10;
+    }
+    System.out.print(num);
+  }
+
+
+Find a number using BinarySearch.
+
+Compare element with mid element. If it's less/greater then Mid element, divide the list into two halves. Search element again in first/second halves . Do this until element is same as mid element.
+
+private static int binarySearch(int[] array, int num) {
+	int low = 0;
+	int high = array.length;
+	for (int i = low; i < high; i++) {
+	    int mid = (high - low) / 2;
+	    System.out.println();
+	    int midElement = array[mid];
+	    System.out.print("midElement:" + midElement);
+	    if (num == midElement) {
+		return mid;
+	    } else if (num < midElement) {
+		high = mid - 1;
+		System.out.print("high:" + high);
+	    } else {
+		low = mid + 1;
+		System.out.print("low:" + low);
+	    }
+	}
+	return -1;
+    }
+
+    private static int binarySearchWithRecursion(int[] array, int num, int low,
+	    int high) {
+	int mid = (high - low) / 2;
+	System.out.println();
+	int midElement = array[mid];
+	System.out.print("midElement:" + midElement);
+	if (num == midElement) {
+	    return mid;
+	} else if (num < midElement) {
+	    mid = binarySearchWithRecursion(array, num, low, mid - 1);
+	} else {
+	    mid  =binarySearchWithRecursion(array, num, mid + 1, high);
+	}
+	return mid;
+    }
+
+
 
 Quicksort Array in Java
+
 Quicksort is a divide and conquer algorithm. It first divides a large list into two smaller sub-lists and then recursively sort the two sub-lists. If we want to sort an array without any extra space, quicksort is a good option. On average, time complexity is O(n log(n)).
 
 The basic step of sorting an array are as follows:
@@ -98,7 +155,10 @@ public static void quickSort(int[] arr, int low, int high) {
  		if (high > i)
 			quickSort(arr, i, high);
 	}
-Two Sum (Java)
+
+call    quickSort(array, 0, size – 1);
+
+Two Sum 
 Given an array of integers, find two numbers such that they add up to a specific target number. 
 
 private static int[] twoSum(int[] array, int target) {
@@ -114,46 +174,8 @@ private static int[] twoSum(int[] array, int target) {
 	return indexArray;
     }
 
-Find a number using BinarySearch.
 
-Compare element with mid element. If it's less/greater then Mid element, divide the list into two halves. Search element again in first/second halves . Do this until element is same as mid element.
 
-private static int binarySearch(int[] array, int num) {
-	int low = 0;
-	int high = array.length;
-	for (int i = low; i < high; i++) {
-	    int mid = (high - low) / 2;
-	    System.out.println();
-	    int midElement = array[mid];
-	    System.out.print("midElement:" + midElement);
-	    if (num == midElement) {
-		return mid;
-	    } else if (num < midElement) {
-		high = mid - 1;
-		System.out.print("high:" + high);
-	    } else {
-		low = mid + 1;
-		System.out.print("low:" + low);
-	    }
-	}
-	return -1;
-    }
-
-    private static int binarySearchWithRecursion(int[] array, int num, int low,
-	    int high) {
-	int mid = (high - low) / 2;
-	System.out.println();
-	int midElement = array[mid];
-	System.out.print("midElement:" + midElement);
-	if (num == midElement) {
-	    return mid;
-	} else if (num < midElement) {
-	    mid = binarySearchWithRecursion(array, num, low, mid - 1);
-	} else {
-	    mid  =binarySearchWithRecursion(array, num, mid + 1, high);
-	}
-	return mid;
-    }
 
 
 Roman to Numeric conversion
@@ -181,7 +203,7 @@ private final static HashMap<Character, Integer> ROMAN_MAP = new HashMap<>();;
 		+ convertToArabic("IIXVVIIIVXX") + "");
     }
 
-    private static int getRomanNumeralValue(char ch) {
+   private static int getRomanNumeralValue(char ch) {
 	if (ROMAN_MAP.containsKey(ch)) {
 	    return ROMAN_MAP.get(ch);
 	} else {
@@ -207,3 +229,84 @@ private final static HashMap<Character, Integer> ROMAN_MAP = new HashMap<>();;
 	}
 	return romanNumberInt;
     }
+
+
+Bubble Sort:
+public static void bubbleSort(int[] array) {
+    for (int i = 0; i < array.length - 1; i++) {
+      for (int j = 0; j < array.length - i - 1; j++) {
+        if (array[j + 1] < array[j]) {
+          int temp = array[j];
+          array[j] = array[j + 1];
+          array[j + 1] = temp;
+        }
+      }
+    }
+    System.out.print("" + Arrays.toString(array));
+  }
+
+
+Stack :
+
+public class Stack<E> {
+  private int top = 0;
+  private int stackSize = 0;
+  private E[] elements;
+
+  public Stack(int capacity) {
+    stackSize = capacity;
+    top = -1;
+    elements = (E[]) new Object[stackSize];
+  }
+
+  public void push(E e) {
+    if (top == stackSize) {
+      throw new StackException("StackOverFlow. Stack is full");
+    }
+    elements[++top] = e;
+  }
+
+  public E pop() {
+    if (top == -1) {
+      throw new StackException("StackUnderFlow.Stack is empty");
+    }
+    return elements[top--];
+  }
+
+  public E peek() {
+    if (top == -1) {
+      throw new StackException("StackUnderFlow.Stack is empty");
+    }
+    return elements[top];
+  }
+
+  public boolean isEmpty() {
+    return top == -1;
+  }
+
+  @Override
+  public String toString() {
+    StringBuffer stringBuffer = new StringBuffer("[");
+    while (!isEmpty()) {
+      stringBuffer.append(pop() + " ");
+    }
+    stringBuffer.append("]");
+    return stringBuffer.toString();
+  }
+
+  private static final class StackException extends RuntimeException {
+
+    private static final long serialVersionUID = 1L;
+
+    private String exceptionEessage;
+
+    private StackException(String message) {
+      exceptionEessage = message;
+    }
+
+  }
+
+}
+		
+
+
