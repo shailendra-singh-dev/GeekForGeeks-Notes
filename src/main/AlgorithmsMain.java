@@ -14,13 +14,21 @@ import arrays.SumOfDigits;
 
 public class AlgorithmsMain {
 
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
-	int[] array = new int[] { 30, 6, -2, 0, 9, 10 };
-	QuickSort.quickSort(array, 0, array.length - 1);
-	BubbleSort.bubbleSort(array);
-	System.out.print("quickSort :" + Arrays.toString(array));
+  /**
+   * @param args
+   */
+  public static void main(String[] args) {
+
+
+    int[] array = new int[] {1, 2, 3, 4, 5};
+    System.out.print("array :" + Arrays.toString(array));
+    int d = 4;
+    for (int i = 0; i < d && i < array.length-1; i++) {
+      array[i] = array[i + 1];
+      array[array.length - 1] = array[i];
+      array[array.length - i - 1] = array[array.length - 1];
     }
+    System.out.print("array :" + Arrays.toString(array));
+
+  }
 }
