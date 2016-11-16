@@ -1,8 +1,12 @@
 package arrays;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+
 public class ValidParenthesis {
 
-   private static boolean isParenthesisMatched(String str) {
+    public static boolean isParenthesisMatchedUsingStack(String str) {
 	if (str == null || str.isEmpty()) {
 	    return false;
 	}
@@ -15,11 +19,11 @@ public class ValidParenthesis {
 	    }
 	    if (current == '}' || current == ']' || current == ')'
 		    || current == '>') {
-		
-		if(stack.isEmpty()){
+
+		if (stack.isEmpty()) {
 		    return false;
 		}
-		
+
 		char last = stack.peek();
 		if ((last == '{' && current == '}')
 			|| (last == '[' && current == ']')
@@ -30,6 +34,29 @@ public class ValidParenthesis {
 	    }
 	}
 	return stack.isEmpty();
+    }
+
+    public static boolean isParenthesisMatchedUsingHashMap(String str) {
+	boolean isMatched = false;
+
+	if (str == null || str.isEmpty()) {
+	    return false;
+	}
+
+	for (int i = 0; i < str.length(); i++) {
+	    char token = str.charAt(i);
+	    if (token == '{' || token == '[' || token == '(' || token == '<') {
+		for (int j = 0; j < str.length() - i - 1; j++) {
+		    char nextToken = str.charAt(j);
+		    if (nextToken == '}' || nextToken == ']'
+			    || nextToken == ')' || nextToken == '>') {
+			isMatched = true;
+			break;
+		    }
+		}
+	    }
+	}
+	return isMatched;
     }
 
 }
