@@ -10,7 +10,7 @@ public class ValidParenthesis {
 	if (str == null || str.isEmpty()) {
 	    return false;
 	}
-	Stack<Character> stack = new Stack<>();
+	Stack<Character> stack = new Stack<Character>();
 	for (int i = 0; i < str.length(); i++) {
 	    char current = str.charAt(i);
 	    if (current == '{' || current == '[' || current == '('
