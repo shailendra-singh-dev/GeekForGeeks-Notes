@@ -53,7 +53,6 @@ public class BinaryTree {
 	Queue<TreeNode> queue = new LinkedList<TreeNode>();
 	queue.offer(getRootNode());
 	
-	int count = 0;
 	while (!queue.isEmpty()) {
 	    TreeNode node = queue.poll();
 	    if(null == node){
@@ -66,9 +65,6 @@ public class BinaryTree {
 	    if(node.getRightNode() != null) {
 		queue.offer(node.getRightNode());
 	    }
-	    
-	    count++;
 	}
-    }
-    
+    }    
 }
