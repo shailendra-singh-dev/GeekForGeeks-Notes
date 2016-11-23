@@ -1,4 +1,4 @@
-package arrays;
+package data_structures;
 
 public class Node {
     // reference to the next node in the chain,

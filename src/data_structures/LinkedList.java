@@ -1,4 +1,5 @@
-package arrays;
+package data_structures;
+
 
 public class LinkedList {
     // reference to the head node.
