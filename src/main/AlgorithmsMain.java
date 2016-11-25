@@ -1,11 +1,12 @@
 package main;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 
+import data_structures.BinarySearchTree;
 import data_structures.BinaryTree;
 
 import arrays.SelectionSort;
-
 
 public class AlgorithmsMain {
 
@@ -13,7 +14,9 @@ public class AlgorithmsMain {
      * @param args
      */
     public static void main(String[] args) {
-	BinaryTree binaryTree =new BinaryTree();
-	binaryTree.printTree();
+	
+	BinarySearchTree binarySearchTree=new BinarySearchTree();
+	binarySearchTree.constructTreee();
+	binarySearchTree.inOrderTraversal(binarySearchTree.getRootNode());
     }
 }
