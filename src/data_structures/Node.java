@@ -7,11 +7,25 @@ public class Node {
     // data carried by this node.
     // could be of any type you need.
     Object data;
+    int _intData;
 
     // Node constructor
     public Node(Object _data) {
 	next = null;
 	data = _data;
+    }
+
+    public Node(int _data) {
+	next = null;
+	_intData = _data;
+    }
+
+    public int getIntData() {
+        return _intData;
+    }
+
+    public void setIntData(int _intData) {
+        this._intData = _intData;
     }
 
     // another Node constructor if we want to

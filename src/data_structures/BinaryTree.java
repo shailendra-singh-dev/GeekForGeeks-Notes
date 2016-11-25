@@ -4,7 +4,7 @@ import java.util.Queue;
 import java.util.LinkedList;
 
 public class BinaryTree {
-
+    
     private TreeNode mRootNode;
 
     public BinaryTree() {
@@ -67,4 +67,5 @@ public class BinaryTree {
 	    }
 	}
     }    
+    
 }

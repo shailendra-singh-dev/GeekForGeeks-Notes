@@ -3,11 +3,26 @@ package data_structures;
 public class TreeNode {
 
     private Object mData;
-    private TreeNode mLeftNode;
-    private TreeNode mRightNode;
+    public TreeNode mLeftNode;
+    public TreeNode mRightNode;
+    private int mIntData;
     
     public TreeNode(Object data){
 	mData = data;
+    }
+    
+    public TreeNode(int data){
+	mIntData = data;
+    }
+    
+    
+
+    public int getIntData() {
+        return mIntData;
+    }
+
+    public void setIntData(int mIntData) {
+        this.mIntData = mIntData;
     }
 
     public Object getData() {
@@ -36,7 +51,7 @@ public class TreeNode {
     
     @Override
     public String toString() {
-      return "["+getData()+"]";
+      return "["+getIntData()+"]";
     }
     
     
