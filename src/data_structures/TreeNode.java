@@ -2,31 +2,20 @@ package data_structures;
 
 public class TreeNode {
 
-    private Object mData;
     public TreeNode mLeftNode;
     public TreeNode mRightNode;
-    private int mIntData;
-    
-    public TreeNode(Object data){
-	mData = data;
-    }
+    private int mData;
     
     public TreeNode(int data){
-	mIntData = data;
-    }
-    
-    
-
-    public int getIntData() {
-        return mIntData;
+	mData = data;
     }
 
-    public void setIntData(int mIntData) {
-        this.mIntData = mIntData;
-    }
-
-    public Object getData() {
+    public int getData() {
         return mData;
+    }
+
+    public void setData(int mIntData) {
+        this.mData = mIntData;
     }
 
     public TreeNode getLeftNode() {
@@ -35,10 +24,6 @@ public class TreeNode {
 
     public TreeNode getRightNode() {
         return mRightNode;
-    }
-
-    public void setData(Object mData) {
-        this.mData = mData;
     }
 
     public void setLeftNode(TreeNode mLeftNode) {
@@ -51,7 +36,7 @@ public class TreeNode {
     
     @Override
     public String toString() {
-      return "["+getIntData()+"]";
+      return "["+getData()+"]";
     }
     
     

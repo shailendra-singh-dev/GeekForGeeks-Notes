@@ -11,7 +11,7 @@ public class BinaryTree {
 	mRootNode = null;
     }
 
-    public BinaryTree(final Object data) {
+    public BinaryTree(final int data) {
 	mRootNode = new TreeNode(data);
     }
 
