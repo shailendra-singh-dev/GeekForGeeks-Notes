@@ -9,6 +9,7 @@ import math.MaxPointsInLine;
 import data_structures.BinarySearchTree;
 import data_structures.BinaryTree;
 
+import arrays.EquilibriumIndex;
 import arrays.SelectionSort;
 import arrays.StringToInt;
 
@@ -18,6 +19,8 @@ public class AlgorithmsMain {
      * @param args
      */
     public static void main(String[] args) {
-	StringToInt.test();
+	int[] array = new int[] { 1, 3, 5, 2, 2 };
+	int index= EquilibriumIndex.getEquilibriumIndex(array);
+	System.out.print("index:"+index);	
     }
 }
