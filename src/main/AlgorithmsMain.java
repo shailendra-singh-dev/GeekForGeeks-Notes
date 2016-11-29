@@ -1,32 +1,23 @@
 package main;
 
+import java.awt.Point;
 import java.util.Arrays;
 import java.util.LinkedList;
+
+import math.MaxPointsInLine;
 
 import data_structures.BinarySearchTree;
 import data_structures.BinaryTree;
 import data_structures.TreeNode;
 
+import arrays.EquilibriumIndex;
 import arrays.SelectionSort;
+import arrays.StringToInt;
 
 public class AlgorithmsMain {
-
 	public static void main(String[] args) {
-
-		BinarySearchTree binarySearchTree = new BinarySearchTree();
-		binarySearchTree.constructTreee();
-		System.out.println("inOrderTraversal:");
-		binarySearchTree.inOrderTraversal(binarySearchTree.getRootNode());
-		System.out.println("\npreOrderTraversal:");
-		binarySearchTree.preOrderTraversal(binarySearchTree.getRootNode());
-		System.out.println("\npostOrderTraversal;");
-		binarySearchTree.postOrderTraversal(binarySearchTree.getRootNode());
-		
-		TreeNode treeNode=new TreeNode(60);
-		TreeNode rootNode=binarySearchTree.getRootNode();
-		System.out.print("\nrootNode:"+rootNode+",treeNode:"+treeNode+"\n");
-		treeNode=binarySearchTree.searchItem(rootNode, treeNode);
-		System.out.print("searchItem:"+treeNode);
-		
+		int[] array = new int[] { -7, 1, 5, 2, -4, 3, 0 };
+		int index = EquilibriumIndex.getEquilibriumIndexEfficient(array);
+		System.out.print("index:" + index);
 	}
 }
