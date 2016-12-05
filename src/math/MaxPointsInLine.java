@@ -10,7 +10,7 @@ public class MaxPointsInLine {
 	    return 0;
 	}
 
-	final HashMap<Double, Integer> result = new HashMap<>();
+	final HashMap<Double, Integer> result = new HashMap<Double, Integer>();
 	int max = 0;
 
 	for (int i = 0; i < points.length; i++) {
