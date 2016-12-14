@@ -8,6 +8,7 @@ import data_structures.Trie;
 
 import arrays.BinarySearch;
 import arrays.CommonManagerTopBottom;
+import arrays.FindAllWordsInString;
 import arrays.MergeSort;
 import arrays.MergingSortedArrays;
 
@@ -15,9 +16,7 @@ public class AlgorithmsMain {
 
 	// Driver method
 	public static void main(String args[]) {
-		BitManipulations bitManipulations=new BitManipulations();
-		bitManipulations.bitwise_and();
+		FindAllWordsInString.test();
 	}
 
-	
 }
