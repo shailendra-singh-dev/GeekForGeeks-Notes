@@ -159,7 +159,9 @@ public class LinkedList {
 		// int count = getListCount();
 		// int count = getListCountRecursive(head);
 		// System.out.println("count:" + count);
-		head = deleteFirst(head);		
+		// head = deleteFirst(head);
+		// System.out.println("" + this);
+		swapNodes2(node2, node3);
 		System.out.println("" + this);
 	}
 
@@ -202,4 +204,90 @@ public class LinkedList {
 		return 0;
 	}
 
+	private void swapNodes(final Node nodeX, Node nodeY) {
+		if (nodeX.data == nodeY.data) {
+			return; // Nothing to swap ,they are same.
+		}
+		Node current = head;
+		Node previuosX = null;
+		Node currentX = null;
+		Node previuosY = null;
+		Node currentY = null;
+
+		if (current.data == nodeX.data) {
+			currentX = nodeX;
+		} else if (current.data == nodeX.data) {
+			currentY = nodeY;
+		}
+
+		while (current != null) {
+			Node previous = current;
+			current = current.next;// null if last node..
+
+			if (null == current) {
+				break;
+			}
+
+			if (current.data == nodeX.data) {
+				previuosX = previous;
+				currentX = current;
+			}
+
+			if (current.data == nodeY.data) {
+				previuosY = previous;
+				currentY = current;
+			}
+		}
+
+		Node temp = currentX.next;
+		currentX.next = currentY.next;
+		currentY.next = temp;
+
+		previuosX.next = currentY;
+		previuosY.next = currentX;
+
+		System.out.print("");
+	}
+
+	public void swapNodes2(final Node nodeX, Node nodeY) {
+		if (nodeX == nodeY)
+			return; // Nothing to swap as keys are same
+		Node current = head;
+		Node prevX = null;
+		Node prevY = null;
+		Node currentX = null;
+		Node currentY = null;
+
+		if (head.data == nodeX) { // Throwing null point exception.
+			currentX = head;
+		} else if (head.data == nodeY) {
+			currentY = head;
+		}
+		while (current != null) {
+			Node prev = current;
+			current = current.next;
+
+			if(null == current){
+				break;
+			}
+			if (current.data == nodeX) {
+				prevX = prev;
+				currentX = current;
+			}
+
+			if (current.data == nodeY) {
+				prevY = prev;
+				currentY = current;
+			}
+			if (current == null)
+				return; // reached end of the loop
+		}// end of while
+		/* Swap the next pointer and current pointers */
+		Node temp = currentX.next;
+		currentX.next = currentY.next;
+		currentY.next = temp;
+
+		prevX.next = currentY;
+		prevY.next = currentX;
+	}
 }
