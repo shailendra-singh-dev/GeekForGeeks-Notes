@@ -161,7 +161,10 @@ public class LinkedList {
 		// System.out.println("count:" + count);
 		// head = deleteFirst(head);
 		// System.out.println("" + this);
-		swapNodes2(node2, node3);
+		// swapNodes(node2, node3);
+		// head = reverseList();
+		// head = reverseUsingRecursion(head);
+		head = reverseUsingTailRecursion(null, head);
 		System.out.println("" + this);
 	}
 
@@ -205,89 +208,100 @@ public class LinkedList {
 	}
 
 	private void swapNodes(final Node nodeX, Node nodeY) {
-		if (nodeX.data == nodeY.data) {
-			return; // Nothing to swap ,they are same.
-		}
-		Node current = head;
-		Node previuosX = null;
-		Node currentX = null;
-		Node previuosY = null;
-		Node currentY = null;
-
-		if (current.data == nodeX.data) {
-			currentX = nodeX;
-		} else if (current.data == nodeX.data) {
-			currentY = nodeY;
-		}
-
-		while (current != null) {
-			Node previous = current;
-			current = current.next;// null if last node..
-
-			if (null == current) {
-				break;
-			}
-
-			if (current.data == nodeX.data) {
-				previuosX = previous;
-				currentX = current;
-			}
-
-			if (current.data == nodeY.data) {
-				previuosY = previous;
-				currentY = current;
-			}
-		}
-
-		Node temp = currentX.next;
-		currentX.next = currentY.next;
-		currentY.next = temp;
-
-		previuosX.next = currentY;
-		previuosY.next = currentX;
-
-		System.out.print("");
-	}
-
-	public void swapNodes2(final Node nodeX, Node nodeY) {
 		if (nodeX == nodeY)
 			return; // Nothing to swap as keys are same
+
 		Node current = head;
 		Node prevX = null;
 		Node prevY = null;
 		Node currentX = null;
 		Node currentY = null;
 
-		if (head.data == nodeX) { // Throwing null point exception.
+		if (head.data == nodeX.data) {
 			currentX = head;
-		} else if (head.data == nodeY) {
+		} else if (head.data == nodeY.data) {
 			currentY = head;
 		}
+
 		while (current != null) {
 			Node prev = current;
 			current = current.next;
 
-			if(null == current){
+			if (null == current) {
 				break;
 			}
-			if (current.data == nodeX) {
+			if (current.data == nodeX.data) {
 				prevX = prev;
 				currentX = current;
 			}
 
-			if (current.data == nodeY) {
+			if (current.data == nodeY.data) {
 				prevY = prev;
 				currentY = current;
 			}
-			if (current == null)
-				return; // reached end of the loop
-		}// end of while
-		/* Swap the next pointer and current pointers */
-		Node temp = currentX.next;
-		currentX.next = currentY.next;
-		currentY.next = temp;
+		}
+		// If either x or y is not present, nothing to do
+		if (currentX == null || currentY == null)
+			return;
 
-		prevX.next = currentY;
-		prevY.next = currentX;
+		/* Swap the next pointer and current pointers */
+		System.out.println("prevX:" + prevX + ",currentX:" + currentX
+				+ ",prevY:" + prevY + ",currentY:" + currentY);
+
+		if (prevX != null) {
+			prevX.next = currentY;
+		} else {
+			head = currentY;
+		}
+		if (prevY != null) {
+			prevY.next = currentX;
+		} else {
+			head = currentX;
+		}
+
+		// Swap next pointers
+		Node temp = currentY.next;
+		currentY.next = currentX.next;
+		currentX.next = temp;
 	}
+
+	private Node reverseList() {
+		Node previus = null;
+		Node next = null;
+		Node current = head;
+		while (current != null) {
+			next = current.next;
+
+			current.next = previus;
+			previus = current;
+			current = next;
+		}
+		return previus;
+	}
+
+	public Node reverseUsingRecursion(Node node) {
+		if (node == null)// Empty List
+			return null;
+		if (node.next == null) // Only one element.
+			return node;
+
+		Node next = node.next;
+		Node reverseRest = reverseUsingRecursion(next);
+		// then we join the two lists
+		next.next = node;
+		// point last node to nil, (get rid of cycles)
+		node.next = null;
+		return reverseRest;
+	}
+
+	// A Simpler and Tail Recursive Method
+	private Node reverseUsingTailRecursion(Node previous, Node current) {
+		Node next = current.next;
+		current.next = previous;
+		System.out.println("previous:" + previous + ",current:" + current);
+
+		return next == null ? current
+				: reverseUsingTailRecursion(current, next);
+	}
+
 }
