@@ -14,8 +14,7 @@ public class MergingSortedArrays {
 
 		int resultingArrayBegin = 0;
 
-		while (leftArrayBegin <= leftArrayEnd
-				&& rightArrayBegin <= rightArrayEnd) {
+		while (leftArrayBegin <= leftArrayEnd && rightArrayBegin <= rightArrayEnd) {
 			if (leftArray[leftArrayBegin] < rightArray[rightArrayBegin]) {
 				resultingArray[resultingArrayBegin++] = leftArray[leftArrayBegin++];
 			} else {

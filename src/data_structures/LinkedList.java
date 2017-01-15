@@ -12,6 +12,14 @@ public class LinkedList {
 		listCount = 0;
 	}
 
+	public void setHead(Node node) {
+		head = node;
+	}
+
+	public Node getHeadNode() {
+		return head;
+	}
+
 	public void add(Node node) {
 		// post: appends the specified element to the end of this list.
 		Node current = head;
@@ -81,12 +89,24 @@ public class LinkedList {
 		Node current = head;
 		String output = "[";
 		while (current != null) {
-			output += "[" + current.data.toString() + "],";
+			output += "[" + current.data + "],";
 			current = current.next;
 		}
 		output = output.substring(0, output.length() - 1);
 		output += "]";
 		return output;
+	}
+
+	private void printList(Node node) {
+		Node current = node;
+		String output = "[";
+		while (current != null) {
+			output += "[" + current.data + "],";
+			current = current.next;
+		}
+		output = output.substring(0, output.length() - 1);
+		output += "]";
+		System.out.println(output);
 	}
 
 	public void addAtFront(final Node node) {
@@ -128,18 +148,20 @@ public class LinkedList {
 	}
 
 	public void test() {
-		Node headNode = new Node(0);
-		Node node1 = new Node(1);
+		Node headNode = new Node(9);
+		Node node1 = new Node(10);
 		Node node2 = new Node(2);
-		Node node3 = new Node(3);
+		Node node3 = new Node(-1);
+		Node node4 = new Node(8);
 		head = headNode;
 
 		head.next = node1;
 		node1.next = node2;
 		node2.next = node3;
-		node3.next = null;
+		node3.next = node4;
+		node4.next = null;
 
-		System.out.println("" + this);
+		printList(headNode);
 		//
 		// Node addAtFrontNode = new Node(-1);
 		// addAtFront(addAtFrontNode);
@@ -164,8 +186,27 @@ public class LinkedList {
 		// swapNodes(node2, node3);
 		// head = reverseList();
 		// head = reverseUsingRecursion(head);
-		head = reverseUsingTailRecursion(null, head);
-		System.out.println("" + this);
+		// head = reverseUsingTailRecursion(null, head);
+
+		// Node headNode2 = new Node(10);
+		// Node node21 = new Node(11);
+		// Node node22 = new Node(22);
+		// Node node23 = new Node(33);
+		// setHead(headNode2);
+		//
+		// getHeadNode().next = node21;
+		// node21.next = node22;
+		// node22.next = node23;
+		// node23.next = null;
+		//
+		// printList(headNode2);
+
+		// Node mergedListNode = getMergedSortedListV2(headNode, headNode2);
+		// printList(mergedListNode);
+
+		// Node mergedListNode = mergeSortIterative(head);
+		Node mergedListNode = mergeSortUsingRecursion(head);
+		printList(mergedListNode);
 	}
 
 	private void deleteFirst() {
@@ -302,6 +343,136 @@ public class LinkedList {
 
 		return next == null ? current
 				: reverseUsingTailRecursion(current, next);
+	}
+
+	// Taken from
+	// https://discuss.leetcode.com/category/29/merge-two-sorted-lists
+	private Node getMergedSortedListUsingIteration(Node firstListNode, Node secondListNode) {
+		if (null == firstListNode && null == secondListNode) {
+			return null;
+		}
+		if (null == firstListNode) {
+			return secondListNode;
+		}
+		if (null == secondListNode) {
+			return firstListNode;
+		}
+		Node head = new Node(-1);
+		Node current = head;
+		while (firstListNode != null && secondListNode != null) {
+			if (firstListNode.data <= secondListNode.data) {
+				current.next = firstListNode;
+				firstListNode = firstListNode.next;
+			} else {
+				current.next = secondListNode;
+				secondListNode = secondListNode.next;
+			}
+			current = current.next;
+		}
+		if (null != firstListNode) {
+			current.next = firstListNode;
+		}
+		if (null != secondListNode) {
+			current.next = secondListNode;
+		}
+		return head.next;
+	}
+
+	// Taken from
+	// https://discuss.leetcode.com/category/29/merge-two-sorted-lists
+	private Node getMergedSortedListRecursion(Node firstListNode,
+			Node secondListNode) {
+		if (null == firstListNode && null == secondListNode) {
+			return null;
+		}
+		if (null == firstListNode) {
+			return secondListNode;
+		}
+		if (null == secondListNode) {
+			return firstListNode;
+		}
+		Node head = new Node(-1);
+		if (firstListNode.data <= secondListNode.data) {
+			head = firstListNode;
+			head.next = getMergedSortedListRecursion(firstListNode.next,
+					secondListNode);
+		} else {
+			head = secondListNode;
+			head.next = getMergedSortedListRecursion(firstListNode,
+					secondListNode.next);
+		}
+		return head;
+	}
+
+	private Node getMiddle(Node head) {
+		Node slowNode = head;
+		Node fastNode = head;
+
+		while (fastNode != null && fastNode.next != null
+				&& fastNode.next.next != null) {
+			slowNode = slowNode.next;
+			fastNode = fastNode.next.next;
+		}
+
+		return slowNode;
+	}
+
+	// Taken from
+	// http://javabypatel.blogspot.mx/2015/12/merge-sort-linked-list.html
+	private Node mergeSortUsingIteration(Node startNode) {
+		// Break the list until list is null or only 1 element is present in
+		// List.
+		if (startNode == null || startNode.next == null) {
+			return startNode;
+		}
+
+		// Break the linklist into 2 list.
+		// Finding Middle node and then breaking the Linled list in 2 parts.
+		// Now 2 list are, 1st list from start to middle and 2nd list from
+		// middle+1 to last.
+
+		Node middle = getMiddle(startNode);
+		Node nextOfMiddle = middle.next;
+		middle.next = null;
+
+		// Again breaking the List until there is only 1 element in each list.
+		Node left = mergeSortUsingIteration(startNode);
+		Node right = mergeSortUsingIteration(nextOfMiddle);
+
+		// Once complete list is divided and contains only single element,
+		// Start merging left and right half by sorting them and passing Sorted
+		// list further.
+		Node sortedList = getMergedSortedListUsingIteration(left, right);
+		return sortedList;
+	}
+
+	// Taken from
+	// http://javabypatel.blogspot.mx/2015/12/merge-sort-linked-list.html
+	private Node mergeSortUsingRecursion(Node startNode) {
+		// Break the list until list is null or only 1 element is present in
+		// List.
+		if (startNode == null || startNode.next == null) {
+			return startNode;
+		}
+
+		// Break the linklist into 2 list.
+		// Finding Middle node and then breaking the Linled list in 2 parts.
+		// Now 2 list are, 1st list from start to middle and 2nd list from
+		// middle+1 to last.
+
+		Node middle = getMiddle(startNode);
+		Node nextOfMiddle = middle.next;
+		middle.next = null;
+
+		// Again breaking the List until there is only 1 element in each list.
+		Node left = mergeSortUsingRecursion(startNode);
+		Node right = mergeSortUsingRecursion(nextOfMiddle);
+
+		// Once complete list is divided and contains only single element,
+		// Start merging left and right half by sorting them and passing Sorted
+		// list further.
+		Node sortedList = getMergedSortedListRecursion(left, right);
+		return sortedList;
 	}
 
 }

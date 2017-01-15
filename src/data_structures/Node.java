@@ -6,17 +6,17 @@ public class Node {
 	Node next;
 	// data carried by this node.
 	// could be of any type you need.
-	Object data;
+	int data;
 
 	// Node constructor
-	public Node(Object _data) {
+	public Node(int _data) {
 		next = null;
 		data = _data;
 	}
 
 	// another Node constructor if we want to
 	// specify the node to point to.
-	public Node(Object _data, Node _next) {
+	public Node(int _data, Node _next) {
 		next = _next;
 		data = _data;
 	}
