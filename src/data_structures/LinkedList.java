@@ -205,8 +205,11 @@ public class LinkedList {
 		// printList(mergedListNode);
 
 		// Node mergedListNode = mergeSortIterative(head);
-		Node mergedListNode = mergeSortUsingRecursion(head);
-		printList(mergedListNode);
+		// Node mergedListNode = mergeSortUsingRecursion(head);
+		// printList(mergedListNode);
+
+		Node reverseKNodes = reverseEveryKNodes( 2);
+		printList(reverseKNodes);
 	}
 
 	private void deleteFirst() {
@@ -347,7 +350,8 @@ public class LinkedList {
 
 	// Taken from
 	// https://discuss.leetcode.com/category/29/merge-two-sorted-lists
-	private Node getMergedSortedListUsingIteration(Node firstListNode, Node secondListNode) {
+	private Node getMergedSortedListUsingIteration(Node firstListNode,
+			Node secondListNode) {
 		if (null == firstListNode && null == secondListNode) {
 			return null;
 		}
@@ -456,7 +460,7 @@ public class LinkedList {
 		}
 
 		// Break the linklist into 2 list.
-		// Finding Middle node and then breaking the Linled list in 2 parts.
+		// Finding Middle node and then breaking the Linked list in 2 parts.
 		// Now 2 list are, 1st list from start to middle and 2nd list from
 		// middle+1 to last.
 
@@ -473,6 +477,27 @@ public class LinkedList {
 		// list further.
 		Node sortedList = getMergedSortedListRecursion(left, right);
 		return sortedList;
+	}
+
+	private Node reverseEveryKNodes(int k) {
+		Node current = head;
+		Node previous = null;
+		Node next = null;
+
+		int count = 0;
+		while (count < k && null != current) {
+			current = current.next;
+
+			current.next = previous;
+			previous = current;
+			current = next;
+		}
+
+		if (null != current) {
+		   head.next = reverseEveryKNodes(k);  		
+		}
+
+		return previous;
 	}
 
 }
