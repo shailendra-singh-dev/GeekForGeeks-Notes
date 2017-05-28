@@ -6,23 +6,32 @@ public class Node {
 	Node next;
 	// data carried by this node.
 	// could be of any type you need.
-	int data;
+	int mData;
 
 	// Node constructor
 	public Node(int _data) {
 		next = null;
-		data = _data;
+		mData = _data;
 	}
 
 	// another Node constructor if we want to
 	// specify the node to point to.
 	public Node(int _data, Node _next) {
 		next = _next;
-		data = _data;
+		mData = _data;
 	}
 
 	@Override
 	public String toString() {
-		return "[" + data + "]";
+		return "[" + mData + "]";
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (null == obj)
+			return false;
+		Node node = (Node) obj;
+		return node.mData == mData;
+	}
+	
 }

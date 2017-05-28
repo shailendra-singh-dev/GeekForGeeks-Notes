@@ -1,23 +1,17 @@
 package main;
 
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Scanner;
 
-import com.sun.xml.internal.ws.api.pipe.Fiber;
-
+import data_structures.CircularLinkedList;
 import data_structures.LinkedList;
-import data_structures.Trie;
-
-import arrays.BinarySearch;
-import arrays.CommonManagerTopBottom;
-import arrays.FindAllWordsInString;
-import arrays.MergeSort;
-import arrays.MergingSortedArrays;
 
 public class AlgorithmsMain {
 
 	// Driver method
 	public static void main(String args[]) {
-		new LinkedList().test();
+		new CircularLinkedList().test();
 	}
-
+	
 }

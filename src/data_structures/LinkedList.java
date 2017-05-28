@@ -89,7 +89,7 @@ public class LinkedList {
 		Node current = head;
 		String output = "[";
 		while (current != null) {
-			output += "[" + current.data + "],";
+			output += "[" + current.mData + "],";
 			current = current.next;
 		}
 		output = output.substring(0, output.length() - 1);
@@ -101,7 +101,7 @@ public class LinkedList {
 		Node current = node;
 		String output = "[";
 		while (current != null) {
-			output += "[" + current.data + "],";
+			output += "[" + current.mData + "],";
 			current = current.next;
 		}
 		output = output.substring(0, output.length() - 1);
@@ -140,7 +140,7 @@ public class LinkedList {
 		}
 		Node previousNode = null;
 		Node current = head;
-		while (current.next != null && current.data != node.data) {
+		while (current.next != null && current.mData != node.mData) {
 			previousNode = current;
 			current = current.next;
 		}
@@ -261,9 +261,9 @@ public class LinkedList {
 		Node currentX = null;
 		Node currentY = null;
 
-		if (head.data == nodeX.data) {
+		if (head.mData == nodeX.mData) {
 			currentX = head;
-		} else if (head.data == nodeY.data) {
+		} else if (head.mData == nodeY.mData) {
 			currentY = head;
 		}
 
@@ -274,12 +274,12 @@ public class LinkedList {
 			if (null == current) {
 				break;
 			}
-			if (current.data == nodeX.data) {
+			if (current.mData == nodeX.mData) {
 				prevX = prev;
 				currentX = current;
 			}
 
-			if (current.data == nodeY.data) {
+			if (current.mData == nodeY.mData) {
 				prevY = prev;
 				currentY = current;
 			}
@@ -364,7 +364,7 @@ public class LinkedList {
 		Node head = new Node(-1);
 		Node current = head;
 		while (firstListNode != null && secondListNode != null) {
-			if (firstListNode.data <= secondListNode.data) {
+			if (firstListNode.mData <= secondListNode.mData) {
 				current.next = firstListNode;
 				firstListNode = firstListNode.next;
 			} else {
@@ -396,7 +396,7 @@ public class LinkedList {
 			return firstListNode;
 		}
 		Node head = new Node(-1);
-		if (firstListNode.data <= secondListNode.data) {
+		if (firstListNode.mData <= secondListNode.mData) {
 			head = firstListNode;
 			head.next = getMergedSortedListRecursion(firstListNode.next,
 					secondListNode);
