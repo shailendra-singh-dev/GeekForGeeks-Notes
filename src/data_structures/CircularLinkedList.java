@@ -127,7 +127,11 @@ public class CircularLinkedList {
 		Node node1 = new Node(12);
 		insertAtStart(node1);
 		Node node2 = new Node(90);
-		insertAtEnd(node2);
+		insertAtStart(node2);
+		Node node3 = new Node(100);
+		insertAtEnd(node3);
+		Node node4 = new Node(20);
+		insertAtEnd(node4);
 		print();
 		// System.out.println("\n-----deleteHead()------");
 		// deleteHead();
@@ -138,9 +142,25 @@ public class CircularLinkedList {
 		// System.out.println("\n-----deleteHead()------");
 		// deleteHead();
 		// print();
-		System.out.println("\n-----deleteNode(node2)------");
-		deleteNode(head);
-		print();
+		// System.out.println("\n-----deleteNode(node2)------");
+		// deleteNode(head);
+		// print();
+
+		System.out.println("\n-----getElement(3)------");
+		Node foundNode = getElement(5);
+		System.out.println("foundNode():" + foundNode);
+	}
+
+	public Node getElement(int index) {
+		Node current = mHead;
+		if (index >= mSize) {
+			return null;
+		}
+		for (int i = 0; i < index; i++) {
+			current = current.next;
+		}
+		return current;
+
 	}
 
 	public void print() {
