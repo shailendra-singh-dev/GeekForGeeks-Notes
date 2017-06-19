@@ -60,9 +60,10 @@ public class CircularLinkedList {
 		mSize++;
 	}
 
+	// Delete from Start
 	public void deleteHead() {
 		if (isEmpty()) {
-			System.out.println("Empty List");
+			System.err.println("Empty List");
 		} else {
 			Node temp = mHead.next;
 			mTail.next = temp;
@@ -74,9 +75,10 @@ public class CircularLinkedList {
 		}
 	}
 
+	// Delete from End
 	public void deleteTail() {
 		if (isEmpty()) {
-			System.out.println("Empty List");
+			System.err.println("Empty List");
 		} else {
 			Node current = mHead;
 			do {
@@ -98,7 +100,7 @@ public class CircularLinkedList {
 
 	public void deleteNode(Node node) {
 		if (isEmpty()) {
-			System.out.println("Empty List");
+			System.err.println("Empty List");
 		} else {
 			Node current = mHead;
 			Node previus = null;

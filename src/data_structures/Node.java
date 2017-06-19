@@ -4,6 +4,7 @@ public class Node {
 	// reference to the next node in the chain,
 	// or null if there isn't one.
 	Node next;
+	Node previous;
 	// data carried by this node.
 	// could be of any type you need.
 	int mData;
@@ -11,13 +12,6 @@ public class Node {
 	// Node constructor
 	public Node(int _data) {
 		next = null;
-		mData = _data;
-	}
-
-	// another Node constructor if we want to
-	// specify the node to point to.
-	public Node(int _data, Node _next) {
-		next = _next;
 		mData = _data;
 	}
 
@@ -33,5 +27,5 @@ public class Node {
 		Node node = (Node) obj;
 		return node.mData == mData;
 	}
-	
+
 }
