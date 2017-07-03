@@ -1,63 +1,56 @@
 package data_structures;
 
 public class Stack<E> {
-    private int top = 0;
-    private int stackSize = 0;
-    private E[] elements;
 
-    public Stack(int capacity) {
-	stackSize = capacity;
-	top = -1;
-	elements = (E[]) new Object[stackSize];
-    }
+	private final int size;
 
-    public void push(E e) {
-	if (top == stackSize) {
-	    throw new StackException("StackOverFlow. Stack is full");
-	}
-	top++;
-	elements[top] = e;
-    }
+	private int top;
 
-    public E pop() {
-	if (top == -1) {
-	    throw new StackException("StackUnderFlow.Stack is empty");
-	}
-	top--;
-	return elements[top];
-    }
+	private E[] elements;
 
-    public E peek() {
-	if (top == -1) {
-	    throw new StackException("StackUnderFlow.Stack is empty");
-	}
-	return elements[top];
-    }
-
-    public boolean isEmpty() {
-	return top == -1;
-    }
-
-    @Override
-    public String toString() {
-	StringBuffer stringBuffer = new StringBuffer("[");
-	while (!isEmpty()) {
-	    stringBuffer.append(pop() + " ");
-	}
-	stringBuffer.append("]");
-	return stringBuffer.toString();
-    }
-
-    private static final class StackException extends RuntimeException {
-
-	private static final long serialVersionUID = 1L;
-
-	private String exceptionEessage;
-
-	private StackException(String message) {
-	    exceptionEessage = message;
+	public Stack() {
+		this(10);
 	}
 
-    }
+	public Stack(int s) {
+		size = s > 0 ? s : 10;
+		top = -1;
 
+		elements = (E[]) new Object[size]; // create array
+	}
+
+	public void push(E pushValue) {
+		if (top == size - 1) // if stack is full
+			throw new FullStackException(String.format(
+					"Stack is full, cannot push %s", pushValue));
+
+		elements[++top] = pushValue; // place pushValue on Stack
+	}
+
+	public E pop() {
+		if (top == -1) // if stack is empty
+			throw new EmptyStackException("Stack is empty, cannot pop");
+
+		return elements[top--]; // remove and return top element of Stack
+	}
+}
+
+class EmptyStackException extends RuntimeException {
+	public EmptyStackException() {
+		this("Stack is empty");
+	}
+
+	public EmptyStackException(String exception) {
+		super(exception);
+	}
+}
+
+class FullStackException extends RuntimeException {
+	public FullStackException() {
+		this("Stack is full");
+	}
+
+	public FullStackException(String exception) {
+		super(exception);
+	}
 }
