@@ -13,8 +13,7 @@ public class MergeSort {
 		}
 	}
 
-	private static void merge(int[] array, int leftArrayBegin,
-			int rightArrayBegin, int rightArrayEnd) {
+	private static void merge(int[] array, int leftArrayBegin,int rightArrayBegin, int rightArrayEnd) {
 
 		int leftArrayEnd = rightArrayBegin - 1;
 
@@ -23,11 +22,10 @@ public class MergeSort {
 		int resultArrayBegin = 0;
 
 		// Find the smallest element in both these array and add it to the
-		// result
+		// result 
 		// array i.e you may have a array of the form [1,5] [2,4]
 		// We need to sort the above as [1,2,4,5]
-		while (leftArrayBegin <= leftArrayEnd
-				&& rightArrayBegin <= rightArrayEnd) {
+		while (leftArrayBegin <= leftArrayEnd && rightArrayBegin <= rightArrayEnd) {
 			if (array[leftArrayBegin] <= array[rightArrayBegin]) {
 				resultArray[resultArrayBegin++] = array[leftArrayBegin++];
 			} else {
