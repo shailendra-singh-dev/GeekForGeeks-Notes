@@ -1,4 +1,4 @@
-package data_structures;
+package data_structures.stack;
 
 public class StackUsingArray<E> {
 	private int top = 0;

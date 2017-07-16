@@ -3,11 +3,11 @@ package data_structures;
 public class Node {
 	// reference to the next node in the chain,
 	// or null if there isn't one.
-	Node next;
-	Node previous;
+	public Node next;
+	public Node previous;
 	// data carried by this node.
 	// could be of any type you need.
-	int mData;
+	public int mData;
 
 	// Node constructor
 	public Node(int _data) {

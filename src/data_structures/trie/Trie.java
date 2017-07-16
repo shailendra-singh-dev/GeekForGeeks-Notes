@@ -1,7 +1,9 @@
-package data_structures;
+package data_structures.trie;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import data_structures.TrieNode;
 
 public class Trie {
 

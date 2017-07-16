@@ -1,7 +1,9 @@
-package data_structures;
+package data_structures.tree;
 
 import java.util.Queue;
 import java.util.LinkedList;
+
+import data_structures.TreeNode;
 
 public class BinarySearchTree {
 

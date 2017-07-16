@@ -1,4 +1,4 @@
-package data_structures;
+package data_structures.stack;
 
 public class StackTemp<E> {
 	private static final int MAX_SIZE = 1000;

@@ -1,4 +1,6 @@
-package data_structures;
+package data_structures.linkedList;
+
+import data_structures.Node;
 
 public class DoubleLinkedList {
 
