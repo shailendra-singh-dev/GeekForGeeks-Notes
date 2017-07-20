@@ -1,42 +1,48 @@
 package data_structures.stack;
 
 public class StackUsingArray<E> {
-	private int top = 0;
-	private int stackSize = 0;
-	private E[] elements;
+	private static final int MAX_SIZE = 1000;
+	private int mTop = 0;
+	private int mSize = 0;
+	private E[] mArray;
 
 	public StackUsingArray(int capacity) {
-		stackSize = capacity;
-		top = -1;
-		elements = (E[]) new Object[stackSize];
+		mTop = -1;
+		mSize = capacity <= 0 ? MAX_SIZE : capacity;
+		mArray = (E[]) new Object[capacity];
 	}
 
-	public E push(E e) {
-		if (top == stackSize) {
-			throw new StackException("StackOverFlow. Stack is full");
+	public void push(E e) {
+		if (mTop == mSize - 1) {
+			throw new RuntimeException("StackOverflow Exception");
+		} else {
+			mArray[++mTop] = e;
 		}
-		top++;
-		elements[top] = e;
-		return elements[top];
 	}
 
 	public E pop() {
-		if (top == -1) {
-			throw new StackException("StackUnderFlow.Stack is empty");
+		if (isEmpty()) {
+			throw new RuntimeException("StackUnderflow Exception");
+		} else {
+			return mArray[mTop--];
 		}
-		top--;
-		return elements[top];
 	}
 
 	public E peek() {
-		if (top == -1) {
-			throw new StackException("StackUnderFlow.Stack is empty");
+		if (isEmpty()) {
+			throw new RuntimeException("StackUnderflow Exception");
+		} else {
+			return mArray[mTop];
 		}
-		return elements[top];
 	}
 
+	public void print() {
+		for (E e : mArray) {
+			System.out.print(e + " ");
+		}
+	}
 	public boolean isEmpty() {
-		return top == -1;
+		return mTop == -1;
 	}
 
 	@Override
@@ -60,9 +66,5 @@ public class StackUsingArray<E> {
 		}
 	}
 
-	public void test() {
-		int int1=100;
-
-	}
 
 }

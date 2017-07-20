@@ -37,7 +37,7 @@ public class BitManipulations {
 		int n1 = 10; // 0......1010
 		// a. make it negative 1......0101
 		// b. 2's complement 1......1010 (last sign bit is same)
-		// c. add 1 1
+		// c. add 1 
 		// d. Result 1......1011 i.e -11
 		int n3 = ~n1; //
 		printf("bitwise_not():%d", n3);

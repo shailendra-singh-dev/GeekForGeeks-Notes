@@ -1,26 +1,18 @@
 package main;
 
-import data_structures.stack.StackTemp;
+import data_structures.stack.StackUsingLinkedList;
+import arrays.MergeSort;
 
 public class AlgorithmsMain {
 
 	public static void main(String[] args) {
-		mainTest();
+//		int[] inputArray = new int[] { 90, 8, -1, 0, 50, 0, 50, 0, 50, -1 };
+//		MergeSort.mergeSort(inputArray, 0, inputArray.length);
+		StackUsingLinkedList.test();
 	}
 	
 	// Driver method
 	public static void main1(String args[]) {
-		StackTemp<Integer> stackTemp = new StackTemp<Integer>(5);
-		Integer pushE1 = stackTemp.push(1000);
-		System.out.println("push(1000):" + pushE1);
-
-		Integer popE1 = stackTemp.pop();
-		System.out.println("pop():" + popE1);
-
-		// Integer peekE1 = stackTemp.peek();
-		// System.out.println("peek():" + peekE1);
-
-		stackTemp.print();
 	}
 
 	static int[][] arr = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 },
