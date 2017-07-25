@@ -36,10 +36,10 @@ public class StackUsingLinkedList {
 		if (isEmpty()) {
 			throw new RuntimeException("Stack Underflow");
 		} else {
-			Node next = mHead.next;
-			mHead = next;
+			Node top = mHead;
+			mHead = mHead.next;
 			mTop--;
-			return mHead;
+			return top;
 		}
 	}
 
@@ -53,12 +53,16 @@ public class StackUsingLinkedList {
 
 	public void print() {
 		Node current = mHead;
-		for (int i = 0; i < mSize; i++) {
-			if (null != current) {
-				current = current.next;
-				System.out.println(current);
-			}
+		while (null != current) {
+			System.out.println(current);
+			current = current.next;
 		}
+
+		// OR
+		/*
+		 * for (int i = 0; i < mSize; i++) { if (null != current) {
+		 * System.out.println(current); current = current.next; } }
+		 */
 	}
 
 	public static void test() {
@@ -74,6 +78,14 @@ public class StackUsingLinkedList {
 		stackUsingLinkedList.push(node4);
 
 		stackUsingLinkedList.print();
+
+		Node popedNode = stackUsingLinkedList.pop();
+		System.out.println("popedNode:" + popedNode);
+		
+		stackUsingLinkedList.print();
+		
+		Node peekNode = stackUsingLinkedList.peek();
+		System.out.println("peekNode:" + peekNode);
 	}
 
 }

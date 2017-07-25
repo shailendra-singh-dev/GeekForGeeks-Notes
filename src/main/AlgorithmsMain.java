@@ -6,11 +6,12 @@ import arrays.MergeSort;
 public class AlgorithmsMain {
 
 	public static void main(String[] args) {
-//		int[] inputArray = new int[] { 90, 8, -1, 0, 50, 0, 50, 0, 50, -1 };
-//		MergeSort.mergeSort(inputArray, 0, inputArray.length);
-		StackUsingLinkedList.test();
+		int[] inputArray = new int[] { 90, 8, -1, 0, 50 };
+		MergeSort.sort(inputArray);
+		MergeSort.print(inputArray);
+		// StackUsingLinkedList.test();
 	}
-	
+
 	// Driver method
 	public static void main1(String args[]) {
 	}
@@ -38,26 +39,20 @@ public class AlgorithmsMain {
 
 	private static void mainTest() {
 		int M = 3, N = 4;
-		int a[][] = { 
-				       { 1, 2, 3, 4 }, 
-				       { 5, 6, 7, 8 },
-				       { 9, 10, 11, 12 } 
-				    };
+		int a[][] = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 } };
 
 		int i, j, t;
 		for (t = 0; t < M + N; t++)
 			for (i = t, j = 0; i >= 0; i--, j++)
 				if ((i < M) && (j < N))
-					System.out.print(" "+a[i][j]);
-		
-		
+					System.out.print(" " + a[i][j]);
+
 		System.out.println("-------");
-		
+
 		for (t = 0; t < M + N; t++)
 			for (i = 0, j = t; j >= 0; j--, i++)
 				if ((i < M) && (j < N))
-					System.out.print(" "+a[i][j]);
-		
-		
+					System.out.print(" " + a[i][j]);
+
 	}
 }
