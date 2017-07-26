@@ -1,5 +1,7 @@
 package data_structures.queue;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
+
 public class QueueUsingArray<E extends Object> {
 
 	private static final int MAX_SIZE = 1000;
@@ -9,12 +11,14 @@ public class QueueUsingArray<E extends Object> {
 	private int mRear;
 
 	public QueueUsingArray(int capacity) {
-		mSize = capacity < 0 ? MAX_SIZE : capacity;
+		mSize = capacity <= 0 ? MAX_SIZE : capacity;
 		mArray = (E[]) new Object[mSize];
+		mFront = -1;
+		mRear = -1;
 	}
 
 	public boolean isEmpty() {
-		return -1 == mFront && -1 == mRear;
+		return (-1 == mFront && -1 == mRear);
 	}
 
 	public void enqueue(E e) {
@@ -29,10 +33,46 @@ public class QueueUsingArray<E extends Object> {
 	}
 
 	public E dequeue() {
-		if(isEmpty()){
-			
+		if (isEmpty()) {
+			return null;
+		} else if (mFront == mRear) {
+			mFront = mRear = -1;
+		} else {
+			mFront = (mFront + 1) % mSize;
 		}
-		
+		return mArray[mFront];
 	}
 
+	public E getFront() {
+		return mArray[mFront];
+	}
+
+	public E getRear() {
+		return mArray[mRear];
+	}
+
+	public void print() {
+		for (int i = mFront; i <= mRear; i++) {
+			System.out.print(mArray[i] + " ");
+		}
+	}
+
+	public static void test() {
+		QueueUsingArray<Integer> queueUsingArray = new QueueUsingArray<Integer>(
+				5);
+		queueUsingArray.enqueue(10);
+		queueUsingArray.enqueue(20);
+		queueUsingArray.enqueue(30);
+		queueUsingArray.enqueue(40);
+
+		queueUsingArray.print();
+
+		System.out.println();
+
+		int dequedElemet = queueUsingArray.dequeue();
+		System.out.println("dequedElemet:" + dequedElemet);
+
+		queueUsingArray.print();
+
+	}
 }

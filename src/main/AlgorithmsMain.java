@@ -1,15 +1,17 @@
 package main;
 
+import data_structures.queue.QueueUsingArray;
 import data_structures.stack.StackUsingLinkedList;
 import arrays.MergeSort;
 
 public class AlgorithmsMain {
 
 	public static void main(String[] args) {
-		int[] inputArray = new int[] { 90, 8, -1, 0, 50 };
-		MergeSort.sort(inputArray);
-		MergeSort.print(inputArray);
+		// int[] inputArray = new int[] { 90, 8, -1, 0, 50 };
+		// MergeSort.sort(inputArray);
+		// MergeSort.print(inputArray);
 		// StackUsingLinkedList.test();
+		QueueUsingArray.test();
 	}
 
 	// Driver method
