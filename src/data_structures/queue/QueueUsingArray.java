@@ -1,5 +1,7 @@
 package data_structures.queue;
 
+import java.util.Arrays;
+
 import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
 public class QueueUsingArray<E extends Object> {
@@ -30,17 +32,21 @@ public class QueueUsingArray<E extends Object> {
 			mRear = (mRear + 1) % mSize;
 		}
 		mArray[mRear] = e;
+		System.out.println("enqueue(),mRear:" + mRear + ",e:" + e);
 	}
 
 	public E dequeue() {
+		E e = null;
 		if (isEmpty()) {
 			return null;
 		} else if (mFront == mRear) {
 			mFront = mRear = -1;
 		} else {
+			e = mArray[mFront];
+			System.out.println("dequeue(),mFront:" + mFront + ",e:" + e);
 			mFront = (mFront + 1) % mSize;
 		}
-		return mArray[mFront];
+		return e;
 	}
 
 	public E getFront() {
@@ -52,9 +58,8 @@ public class QueueUsingArray<E extends Object> {
 	}
 
 	public void print() {
-		for (int i = mFront; i <= mRear; i++) {
-			System.out.print(mArray[i] + " ");
-		}
+		String array=Arrays.toString(mArray);
+		System.out.println(array);
 	}
 
 	public static void test() {
@@ -64,15 +69,35 @@ public class QueueUsingArray<E extends Object> {
 		queueUsingArray.enqueue(20);
 		queueUsingArray.enqueue(30);
 		queueUsingArray.enqueue(40);
+		queueUsingArray.enqueue(50);
+		queueUsingArray.enqueue(60);
 
 		queueUsingArray.print();
 
 		System.out.println();
 
 		int dequedElemet = queueUsingArray.dequeue();
-		System.out.println("dequedElemet:" + dequedElemet);
-
+		System.out.print("dequedElemet:" + dequedElemet);
+		System.out.println();
 		queueUsingArray.print();
 
+		System.out.println();
+		int dequedElemet1 = queueUsingArray.dequeue();
+		System.out.print("dequedElemet1:" + dequedElemet1);
+		System.out.println();
+		queueUsingArray.print();
+
+		System.out.println();
+		int dequedElemet2 = queueUsingArray.dequeue();
+		System.out.print("dequedElemet2:" + dequedElemet2);
+		System.out.println();
+
+		queueUsingArray.print();
+		System.out.println();
+
+		queueUsingArray.enqueue(70);
+		queueUsingArray.enqueue(80);
+
+		queueUsingArray.print();
 	}
 }
