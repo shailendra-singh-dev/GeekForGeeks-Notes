@@ -1,6 +1,9 @@
 package main;
 
 import data_structures.queue.QueueUsingArray;
+import data_structures.queue.QueueUsingLinkedList;
+import data_structures.queue.QueueUsingSingleStack;
+import data_structures.queue.QueueUsingTwoStacks;
 import data_structures.stack.StackUsingLinkedList;
 import arrays.MergeSort;
 
@@ -11,7 +14,11 @@ public class AlgorithmsMain {
 		// MergeSort.sort(inputArray);
 		// MergeSort.print(inputArray);
 		// StackUsingLinkedList.test();
-		QueueUsingArray.test();
+//		QueueUsingArray.test();
+//		QueueUsingLinkedList.test();
+//		QueueUsingTwoStacks.test();
+		
+		QueueUsingSingleStack.test();
 	}
 
 	// Driver method
