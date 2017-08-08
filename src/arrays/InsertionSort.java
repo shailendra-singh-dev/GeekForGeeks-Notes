@@ -1,10 +1,11 @@
 package arrays;
 
+import java.security.Principal;
 import java.util.Arrays;
 
 public class InsertionSort {
 
-	public static int[] insertionSort(int[] array) {
+	public void insertionSort(int[] array) {
 		int key;
 		for (int i = 1; i < array.length; i++) {
 			key = array[i];
@@ -14,9 +15,21 @@ public class InsertionSort {
 					array[j] = array[j + 1];
 					array[j + 1] = temp;
 				}
-				System.out.println(Arrays.toString(array));
 			}
 		}
-		return array;
+	}
+	
+	public static void test() {
+		InsertionSort insertionSort = new InsertionSort();
+		int[] inputArray = new int[] { 90, 8, -1, 0, 50 };
+		insertionSort.insertionSort(inputArray);
+		insertionSort.print(inputArray);
+
+	}
+
+	private void print(int[] array) {
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(" " + array[i]);
+		}
 	}
 }

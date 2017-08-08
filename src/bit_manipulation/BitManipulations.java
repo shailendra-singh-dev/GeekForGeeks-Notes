@@ -1,4 +1,4 @@
-package main;
+package bit_manipulation;
 
 public class BitManipulations {
 	int bitwise_and() {

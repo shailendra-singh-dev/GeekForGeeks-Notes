@@ -4,14 +4,16 @@ import java.util.Arrays;
 
 public class QuickSort {
 
-	public static void quickSort(int[] array, int low, int high) {
+	public void quickSort(int[] array, int low, int high) {
 		if (low >= high || high > array.length || array.length == 0) {
 			return;
 		}
 
 		// pick the pivot
 		int middle = low + (high - low) / 2;
-		int pivot = array[middle];
+		 int pivot = array[middle];
+		 //int pivot = array[low];
+         //int pivot = array[high];
 
 		// make left < pivot and right > pivot
 		int i = low, j = high;
@@ -36,8 +38,22 @@ public class QuickSort {
 		// recursively sort two sub parts
 		if (low < j)
 			quickSort(array, low, j);
-		if (high > i)
+		if (i < high)
 			quickSort(array, i, high);
+	}
+
+	public static void test() {
+		QuickSort quickSort = new QuickSort();
+		int[] inputArray = new int[] { 90, 8, -1, 0, 50 };
+		quickSort.quickSort(inputArray, 0, inputArray.length - 1);
+		quickSort.print(inputArray);
+
+	}
+
+	private void print(int[] array) {
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(" " + array[i]);
+		}
 	}
 
 }

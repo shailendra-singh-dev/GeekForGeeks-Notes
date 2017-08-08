@@ -6,7 +6,7 @@ import java.util.Stack;
 
 public class ValidParenthesis {
 
-	public static boolean isParenthesisMatchedUsingStack(String str) {
+	public  boolean isParenthesisMatchedUsingStack(String str) {
 		if (str == null || str.isEmpty()) {
 			return false;
 		}
@@ -36,7 +36,7 @@ public class ValidParenthesis {
 		return stack.isEmpty();
 	}
 
-	public static boolean isParenthesisMatchedUsingHashMap(String str) {
+	public boolean isParenthesisMatchedUsingHashMap(String str) {
 		boolean isMatched = false;
 
 		if (str == null || str.isEmpty()) {
@@ -57,6 +57,13 @@ public class ValidParenthesis {
 			}
 		}
 		return isMatched;
+	}
+
+	public static void test() {
+		ValidParenthesis validParenthesis = new ValidParenthesis();
+		String str = "{([abc]}";
+		boolean isParenthesisMatched = validParenthesis.isParenthesisMatchedUsingStack(str);
+		System.out.println("isParenthesisMatched()"+isParenthesisMatched);
 	}
 
 }

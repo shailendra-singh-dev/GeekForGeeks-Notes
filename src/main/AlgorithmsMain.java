@@ -5,20 +5,28 @@ import data_structures.queue.QueueUsingLinkedList;
 import data_structures.queue.QueueUsingSingleStack;
 import data_structures.queue.QueueUsingTwoStacks;
 import data_structures.stack.StackUsingLinkedList;
+import arrays.Duplicates;
+import arrays.InsertionSort;
 import arrays.MergeSort;
+import arrays.QuickSort;
+import arrays.ValidParenthesis;
 
 public class AlgorithmsMain {
 
 	public static void main(String[] args) {
 		// int[] inputArray = new int[] { 90, 8, -1, 0, 50 };
+		// QuickSort.test();
+//		InsertionSort.test();
 		// MergeSort.sort(inputArray);
 		// MergeSort.print(inputArray);
 		// StackUsingLinkedList.test();
-//		QueueUsingArray.test();
-//		QueueUsingLinkedList.test();
-//		QueueUsingTwoStacks.test();
+		// QueueUsingArray.test();
+		// QueueUsingLinkedList.test();
+		// QueueUsingTwoStacks.test();
+		// QueueUsingSingleStack.test();
 		
-		QueueUsingSingleStack.test();
+//		ValidParenthesis.test();
+		Duplicates.test();
 	}
 
 	// Driver method
