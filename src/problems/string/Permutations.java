@@ -31,7 +31,7 @@ public class Permutations {
 	}
 
 	public static void test() {
-		String str = "AAA";
+		String str = "ABC";
 		Set<String> permutations = getAllPermutations(str);
 		System.out.println(Arrays.toString(permutations.toArray()));
 	}
