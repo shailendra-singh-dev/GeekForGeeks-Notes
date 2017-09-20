@@ -1,5 +1,5 @@
 package problems.string;
-public class StringComparision {
+public class StringPool {
 
 	public static void test() {
 		String a = "ABC";
