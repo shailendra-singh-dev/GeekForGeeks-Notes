@@ -2,7 +2,7 @@ package main;
 
 import java.util.*;
 
-public class AlgorithmsMain {
+public class UniqueImages {
 
 	public static void main(String[] args) {
 		Image[] images = new Image[] { new Image("flag.jpg", 40, 60),
