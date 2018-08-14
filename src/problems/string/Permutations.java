@@ -16,7 +16,7 @@ public class Permutations {
 		}
 		char firstChar = str.charAt(0);
 		System.out.println("firstChar:" + firstChar);
-		
+
 		String remainingString = str.substring(1);
 		System.out.println("remainingString:" + remainingString);
 
@@ -41,8 +41,26 @@ public class Permutations {
 	}
 
 	public static void test() {
-		String str = "ABC";
-		Set<String> permutations = getAllPermutations(str);
-		System.out.println("permutations:"+Arrays.toString(permutations.toArray()));
+		String str = "abc";
+		printAllPermutations(str);
 	}
+
+	private static void printAllPermutations(String str) {
+		printAllPermutations(str, "");
+	}
+
+	private static void printAllPermutations(String str, String prefix) {
+		if (str.isEmpty()) {
+			System.out.println(prefix);
+		} else {
+			for (int i = 0; i < str.length(); i++) {
+				String rem = str.substring(0, i) + str.substring(i + 1);
+				System.out.println("str.substring(0, i):" + str.substring(0, i)
+						+ ", str.substring(i + 1):" + (str.substring(i + 1))
+						+ ",rem:" + rem);
+				printAllPermutations(rem, prefix + str.charAt(i));
+			}
+		}
+	}
+
 }
