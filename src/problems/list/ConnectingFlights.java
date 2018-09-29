@@ -58,6 +58,7 @@ public class ConnectingFlights {
 
 		for(Integer intValue:keys){
 			System.out.print(intValue +" " +map.get(intValue));
+			System.out.println();
 		}
 		
 	}
@@ -111,7 +112,7 @@ public class ConnectingFlights {
 	private static int getAllConnectingFlightsTotalPrice(ArrayList<Flight> connectingFlights){
 		int cost = 0;
 		for (Flight flight : connectingFlights) {
-			 cost = flight.getPrice();
+			 cost += flight.getPrice();
 		}
 		return cost;
 	}
@@ -121,14 +122,20 @@ public class ConnectingFlights {
 			for (int j = i+1; j < connectingFlights.size(); j++) {
 				Flight jFlight= connectingFlights.get(j);
 				Flight iFlight= connectingFlights.get(i);
-//				System.out.println("Comparing " + jFlight +" with "+ iFlight);
+				System.out.println("Comparing " + jFlight +" with "+ iFlight);
 				if (jFlight.departure.equals(iFlight.arrival)) {
 					stringBuilder.append(jFlight.departure);
+					stringBuilder.append(" ");
+					stringBuilder.append(jFlight.arrival);
+					stringBuilder.append(" ");
 					stringBuilder.append(iFlight.arrival);
 				}
 				if (jFlight.arrival.equals(iFlight.departure)) {
-					stringBuilder.append(iFlight.departure);
+					stringBuilder.append(jFlight.departure);
+					stringBuilder.append(" ");
 					stringBuilder.append(jFlight.arrival);
+					stringBuilder.append(" ");
+					stringBuilder.append(iFlight.arrival);
 				}
 			}
 		}
