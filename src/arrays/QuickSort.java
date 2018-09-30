@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class QuickSort {
 
-	public void quickSort(int[] array, int low, int high) {
+	public static int[] quickSort(int[] array, int low, int high) {
 		if (low >= high || high > array.length || array.length == 0) {
-			return;
+			return null;
 		}
 
 		// pick the pivot
@@ -40,17 +40,19 @@ public class QuickSort {
 			quickSort(array, low, j);
 		if (i < high)
 			quickSort(array, i, high);
+		
+		return array;
 	}
+
 
 	public static void test() {
-		QuickSort quickSort = new QuickSort();
 		int[] inputArray = new int[] { 90, 8, -1, 0, 50 };
-		quickSort.quickSort(inputArray, 0, inputArray.length - 1);
-		quickSort.print(inputArray);
+		int[] b = quickSort(inputArray, 0, inputArray.length - 1);
+		print(b);
 
 	}
 
-	private void print(int[] array) {
+	private static void print(int[] array) {
 		for (int i = 0; i < array.length; i++) {
 			System.out.print(" " + array[i]);
 		}
