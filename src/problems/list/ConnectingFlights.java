@@ -52,10 +52,11 @@ public class ConnectingFlights {
 		mFlights.add(flight5);
 		mFlights.add(flight6);
 
-		ArrayList<ArrayList<Flight>> connectingFlights = getAllConnectingFlights(departure,arrival);
-		System.out.println("connectingFlights:"+connectingFlights);
 		ArrayList<Flight> directFlights = getAllDirectFlights(departure, arrival);
 		System.out.println("directFlights:"+directFlights);
+		
+		ArrayList<ArrayList<Flight>> connectingFlights = getAllConnectingFlights(departure,arrival);
+		System.out.println("connectingFlights:"+connectingFlights);
 		
 		final HashMap<Integer, String> map=new HashMap<Integer, String>();
 		for(ArrayList<Flight> item:connectingFlights){
@@ -105,33 +106,18 @@ public class ConnectingFlights {
 					Flight jFlight= mFlights.get(j);
 					Flight iFlight= mFlights.get(i);
 //					System.out.println("Comparing " + jFlight +" with "+ iFlight);
-					if (jFlight.departure.equals(iFlight.arrival)) {
-						connectingFlights.add(k++,jFlight);
-						connectingFlights.add(k++,iFlight);						
+					if (iFlight.departure.equals(jFlight.arrival) && iFlight.departure.equals(departure)) {
+						connectingFlights.set(k++, iFlight);
 					}
-					if (jFlight.arrival.equals(iFlight.departure)) {
-						connectingFlights.add(k++,iFlight);
-						connectingFlights.add(k++,jFlight);					
+					if (iFlight.departure.equals(jFlight.arrival) && iFlight.departure.equals(departure)) {
+						connectingFlights.set(k++, iFlight);
 					}
 				}
 			}
 			
-			boolean isConnectingFlights = false;
-			for (int i = 0; i < connectingFlights.size(); i++) {
-				Flight flight = connectingFlights.get(i);
-				if (departure.equals(flight.departure)) {
-					connectingFlights.set(0, flight);
-					isConnectingFlights = true;
-				}
-				if (arrival.equals(flight.arrival)) {
-					connectingFlights.set(k - 1, flight);
-					if (!isConnectingFlights) {
-						isConnectingFlights = true;
-					}
-				}
-			}
 //			System.out.println("1.connectingFlights:"+connectingFlights);
 			if(!allConnectingFlights.contains(connectingFlights)){
+				mFlights.removeAll(connectingFlights);
 				allConnectingFlights.add(connectingFlights);		
 			}					
 		}
@@ -176,7 +162,6 @@ public class ConnectingFlights {
 		for (Flight flight : mFlights) {
 			if ((flight.arrival.equals(arrival) && flight.departure.equals(departure))) {
 				directFlights.add(flight);
-				mFlights.remove(flight);
 			}
 		}
 		return directFlights;	

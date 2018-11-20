@@ -66,4 +66,24 @@ public class ValidParenthesis {
 		System.out.println("isParenthesisMatched()"+isParenthesisMatched);
 	}
 
+	
+	private static boolean isParenthesisValid(String str) {
+		if (str.isEmpty() || null == str) {
+			return false;
+		}
+		Stack<Character> stack = new Stack<Character>();
+		for (int i = 0; i < str.length(); i++) {
+			char charFound = str.charAt(i);
+			if (charFound == '[' || charFound == '{' || charFound == '(') {
+				stack.push(charFound);
+			}
+			if (charFound == ']' || charFound == '}' || charFound == ')') {
+				char charAtTop = stack.pop();
+				if (charAtTop == '[' || charAtTop == '{' || charAtTop == '(') {
+					stack.isEmpty();
+				}	
+			}
+		}
+		return stack.isEmpty();		
+	}
 }
