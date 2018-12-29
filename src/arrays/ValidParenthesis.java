@@ -61,13 +61,13 @@ public class ValidParenthesis {
 
 	public static void test() {
 		ValidParenthesis validParenthesis = new ValidParenthesis();
-		String str = "{([abc]}";
-		boolean isParenthesisMatched = validParenthesis.isParenthesisMatchedUsingStack(str);
+		String str = "{[abc]()[]797ABC}";
+		boolean isParenthesisMatched = validParenthesis.isParenthesisValid(str);
 		System.out.println("isParenthesisMatched()"+isParenthesisMatched);
 	}
 
 	
-	private static boolean isParenthesisValid(String str) {
+	private boolean isParenthesisValid(String str) {
 		if (str.isEmpty() || null == str) {
 			return false;
 		}
@@ -80,7 +80,7 @@ public class ValidParenthesis {
 			if (charFound == ']' || charFound == '}' || charFound == ')') {
 				char charAtTop = stack.pop();
 				if (charAtTop == '[' || charAtTop == '{' || charAtTop == '(') {
-					stack.isEmpty();
+					continue;
 				}	
 			}
 		}
