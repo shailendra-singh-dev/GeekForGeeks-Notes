@@ -1,15 +1,12 @@
 package main;
-import arrays.QuickSort;
-import arrays.SelectionSort;
-import problems.arrays.PointInsideTringle;
-import problems.list.ConnectingFlights;
-import problems.string.CompressString;
-import problems.tree.IsMirrorOfEachOther;
+
+import problems.list.DetectLoop;
+import arrays.ZeroMatrix;
 
 public class AlgorithmsMain {
 
 	public static void main(String[] args) {
-		IsMirrorOfEachOther.test();
+		DetectLoop.test();
 	}
 	
 }

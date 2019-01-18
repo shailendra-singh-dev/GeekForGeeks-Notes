@@ -151,12 +151,4 @@ public class BinarySearchTree {
 		return search(leftNode.getRightNode(), node);
 	}
 
-	private TreeNode insert(TreeNode node){
-		if(mRootNode ==null){
-			mRootNode = new TreeNode(node.getData());
-			return mRootNode;
-		}
-		
-	}
-	
 }
