@@ -1,11 +1,12 @@
 package main;
 
-import arrays.Fibonacci;
+import problems.list.DetectLoop;
+import arrays.ZeroMatrix;
 
 public class AlgorithmsMain {
 
 	public static void main(String[] args) {
-		Fibonacci.test();
+		DetectLoop.test();
 	}
-
+	
 }

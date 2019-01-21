@@ -140,5 +140,15 @@ public class BinarySearchTree {
 	public TreeNode getRootNode() {
 		return mRootNode;
 	}
+	
+	private TreeNode search(TreeNode leftNode ,TreeNode node){
+		if(node.getData() == mRootNode.getData()){
+			return node;
+		}
+		if(node.getData() < leftNode.getData()){
+			search(leftNode.getLeftNode(), node);
+		}
+		return search(leftNode.getRightNode(), node);
+	}
 
 }
