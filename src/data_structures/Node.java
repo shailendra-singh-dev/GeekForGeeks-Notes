@@ -8,6 +8,7 @@ public class Node {
 	// data carried by this node.
 	// could be of any type you need.
 	public int mData;
+	public String data;
 
 	// Node constructor
 	public Node(int _data) {
@@ -15,9 +16,19 @@ public class Node {
 		mData = _data;
 	}
 
+	public Node(String _data) {
+		next = null;
+		data = _data;
+	}
+
 	@Override
 	public String toString() {
-		return "[" + mData + "]";
+		if (mData != -1 && null == data) {
+			return "[Int:" + mData + "]";
+		} else if (mData == 0 && null != data) {
+			return "[" + data + "]";
+		}
+		return null;
 	}
 
 	@Override
@@ -25,7 +36,7 @@ public class Node {
 		if (null == obj)
 			return false;
 		Node node = (Node) obj;
-		return node.mData == mData;
+		return node.mData == mData || node.data.equals(data);
 	}
 
 }
