@@ -1,12 +1,16 @@
 package main;
 
+import java.util.HashMap;
+
+import data_structures.Node;
 import problems.list.DetectLoop;
-import arrays.ZeroMatrix;
+import problems.list.RemoveDuplicates;
 
 public class AlgorithmsMain {
 
+
 	public static void main(String[] args) {
-		DetectLoop.test();
+		RemoveDuplicates.test();
 	}
-	
+
 }
