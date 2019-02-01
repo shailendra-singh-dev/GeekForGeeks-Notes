@@ -2,7 +2,7 @@ package problems.list;
 
 import data_structures.Node;
 
-public class MergeSortedList {
+public class MergeTwoSortedList {
 
 	private static Node a, b;
 

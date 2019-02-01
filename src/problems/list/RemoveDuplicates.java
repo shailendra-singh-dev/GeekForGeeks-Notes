@@ -1,13 +1,19 @@
 package problems.list;
 
-import java.util.HashSet;
-import java.util.SortedMap;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.TreeMap;
+
+import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
 
 import data_structures.Node;
 
 public class RemoveDuplicates {
 
+	private static final HashMap<Node, Node> HASHMAP = new HashMap<Node, Node>();
+
+	// https://www.geeksforgeeks.org/remove-duplicates-from-an-unsorted-linked-list/
 	private static void removeDuplicatesUsingHashing(Node head) {
 		TreeMap<String, Node> TREEMAP = new TreeMap<String, Node>();
 		Node previous = null;
@@ -24,33 +30,47 @@ public class RemoveDuplicates {
 	}
 
 	private static void removeDuplicatesUsingTwoPointers(Node head) {
+		System.out.println("\n-----------------");
 		if (null == head) {
 			return;
 		}
-		Node previous = null;
-		Node slow = head;
-		Node fast = head.next;
-		while (null != slow && null != fast) {
-			if (isSame(slow, fast)) {
-				previous.next = fast.next;
-			}
-			previous = fast;
-			fast = fast.next;
-		}
-	}
-
-	private static boolean isSame(Node node, Node head) {
-		System.out.println("node:" + node + ",head" + head);
 		Node current = head;
-		while (null != current) {
-			if (current == node) {
-				return true;
+		while (current != null) {
+			/* Remove all future nodes that have the same value */
+			Node runner = current;
+			while (runner.next != null) { 
+				if (runner.next.data == current.data) {
+					runner.next = runner.next.next;
+				} else {
+					runner = runner.next;
+				}
 			}
 			current = current.next;
 		}
-		return false;
 	}
 
+	
+	private static void removeDuplicatesUsingMergeSort(Node head) {
+		System.out.println("\n-----------------");
+		if (null == head) {
+			return;
+		}
+		Node current = head;
+		while (current != null) {
+			/* Remove all future nodes that have the same value */
+			Node runner = current;
+			while (runner.next != null) { 
+				if (runner.next.data == current.data) {
+					runner.next = runner.next.next;
+				} else {
+					runner = runner.next;
+				}
+			}
+			current = current.next;
+		}
+	}
+	
+	
 	private static void print(Node head) {
 		System.out.println("\n-----------------");
 		Node current = head;
@@ -83,6 +103,7 @@ public class RemoveDuplicates {
 
 		print(head);
 		// removeDuplicatesUsingHashing(head);
+		// removeDuplicatesUsingTwoPointers(head);
 		removeDuplicatesUsingTwoPointers(head);
 		print(head);
 	}
