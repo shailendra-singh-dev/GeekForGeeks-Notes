@@ -10,6 +10,22 @@ import data_structures.Node;
 public class RemoveDuplicates {
 
 	private static final HashMap<Node, Node> HASHMAP = new HashMap<Node, Node>();
+
+	// https://www.geeksforgeeks.org/remove-duplicates-from-an-unsorted-linked-list/
+	private static void removeDuplicatesUsingTwoPintersV1(Node head) {
+		if (null == head) {
+			return;
+		}
+		Node first = head;
+		Node second = head.next;
+		while (null != first) {
+			while(null != second){
+				if(first == second){
+					
+				}
+			}
+		}
+	}
 	
 	private static void remove(Node head) {
 		Node previous = null;
@@ -49,8 +65,9 @@ public class RemoveDuplicates {
 		node8.next = node9;
 
 		print(head);
-		remove(head);
+		// remove(head);
 		System.out.println("\n-----------");
+		removeDuplicatesUsingTwoPintersV1(head);
 		print(head);
 	}
 
@@ -73,5 +90,4 @@ public class RemoveDuplicates {
 
 	}
 
-	// https://www.geeksforgeeks.org/remove-duplicates-from-an-unsorted-linked-list/
 }
