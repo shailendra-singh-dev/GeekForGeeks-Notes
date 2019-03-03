@@ -1,9 +1,11 @@
 package problems.list;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.TreeMap;
+
+import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
 
 import data_structures.Node;
 
@@ -12,6 +14,7 @@ public class RemoveDuplicates {
 	private static final HashMap<Node, Node> HASHMAP = new HashMap<Node, Node>();
 
 	// https://www.geeksforgeeks.org/remove-duplicates-from-an-unsorted-linked-list/
+<<<<<<< HEAD
 	private static void removeDuplicatesUsingTwoPintersV1(Node head) {
 		if (null == head) {
 			return;
@@ -28,17 +31,70 @@ public class RemoveDuplicates {
 	}
 	
 	private static void remove(Node head) {
+=======
+	private static void removeDuplicatesUsingHashing(Node head) {
+		TreeMap<String, Node> TREEMAP = new TreeMap<String, Node>();
+>>>>>>> 2f7dceb5ea16b762a9a27662a4fe0fbf31f6cc2d
 		Node previous = null;
 		Node current = head;
 		while (null != current) {
-			if (HASHMAP.containsKey(current)) {
-				if (null != previous) {
-					previous.next = current.next;
-				}
+			if (TREEMAP.containsKey(current.data)) {
+				previous.next = current.next;
 			} else {
 				previous = current;
-				HASHMAP.put(current, current);
+				TREEMAP.put(current.data, current);
 			}
+			current = current.next;
+		}
+	}
+
+	private static void removeDuplicatesUsingTwoPointers(Node head) {
+		System.out.println("\n-----------------");
+		if (null == head) {
+			return;
+		}
+		Node current = head;
+		while (current != null) {
+			/* Remove all future nodes that have the same value */
+			Node runner = current;
+			while (runner.next != null) { 
+				if (runner.next.data == current.data) {
+					runner.next = runner.next.next;
+				} else {
+					runner = runner.next;
+				}
+			}
+			current = current.next;
+		}
+	}
+
+	
+	private static void removeDuplicatesUsingMergeSort(Node head) {
+		System.out.println("\n-----------------");
+		if (null == head) {
+			return;
+		}
+		Node current = head;
+		while (current != null) {
+			/* Remove all future nodes that have the same value */
+			Node runner = current;
+			while (runner.next != null) { 
+				if (runner.next.data == current.data) {
+					runner.next = runner.next.next;
+				} else {
+					runner = runner.next;
+				}
+			}
+			current = current.next;
+		}
+	}
+	
+	
+	private static void print(Node head) {
+		System.out.println("\n-----------------");
+		Node current = head;
+		while (null != current) {
+			System.out.print(" " + current);
 			current = current.next;
 		}
 	}
@@ -65,6 +121,7 @@ public class RemoveDuplicates {
 		node8.next = node9;
 
 		print(head);
+<<<<<<< HEAD
 		// remove(head);
 		System.out.println("\n-----------");
 		removeDuplicatesUsingTwoPintersV1(head);
@@ -90,4 +147,12 @@ public class RemoveDuplicates {
 
 	}
 
+=======
+		// removeDuplicatesUsingHashing(head);
+		// removeDuplicatesUsingTwoPointers(head);
+		removeDuplicatesUsingTwoPointers(head);
+		print(head);
+	}
+
+>>>>>>> 2f7dceb5ea16b762a9a27662a4fe0fbf31f6cc2d
 }

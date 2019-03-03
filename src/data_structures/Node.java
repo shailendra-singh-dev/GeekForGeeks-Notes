@@ -1,6 +1,6 @@
 package data_structures;
 
-public class Node {
+public class Node implements Comparable<Node> {
 	// reference to the next node in the chain,
 	// or null if there isn't one.
 	public Node next;
@@ -23,12 +23,11 @@ public class Node {
 
 	@Override
 	public String toString() {
-		if (mData != -1 && null == data) {
-			return "[Int:" + mData + "]";
-		} else if (mData == 0 && null != data) {
+		if (null != data) {
 			return "[" + data + "]";
+		} else {
+			return "[" + mData + "]";
 		}
-		return null;
 	}
 
 	@Override
@@ -36,7 +35,23 @@ public class Node {
 		if (null == obj)
 			return false;
 		Node node = (Node) obj;
-		return node.mData == mData || node.data.equals(data);
+		if (null != data) {
+			return data.equals(node.data);
+		} else {
+			return mData == node.mData;
+		}
+	}
+
+	@Override
+	public int compareTo(Node obj) {
+		if (null == obj)
+			return 0;
+		Node node = (Node) obj;
+		if (null != data) {
+			return data.compareTo(node.data);
+		} else {
+			return mData - node.mData;
+		}
 	}
 
 }

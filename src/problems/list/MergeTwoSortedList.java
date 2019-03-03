@@ -2,7 +2,7 @@ package problems.list;
 
 import data_structures.Node;
 
-public class MergeSortedList {
+public class MergeTwoSortedList {
 
 	private static Node a, b;
 
@@ -57,7 +57,37 @@ public class MergeSortedList {
 
 		b = a11;
 
-		Node result = getResult(a, b);
+		Node result = getResult(a,b);
 		printResult(result);
 	}
+	
+	private static Node getMergedListV2() {
+		Node head = null;
+		if(a.mData <= b.mData) {
+			head = a;
+			head.next = b;
+		}else if(b.mData <= a.mData) {
+			head = b;
+			head.next= a;
+		}
+		
+		Node aNext = a.next;
+		Node bNext = b.next;
+		
+		while (null != aNext && null != bNext) {
+			if (aNext.mData >= head.mData && aNext.mData <= bNext.mData) {
+				head.next = aNext;
+				head = head.next;
+			}
+			if (bNext.mData >= head.mData && bNext.mData <= aNext.mData) {
+				head.next = bNext;
+				head = head.next;
+			}
+			aNext = a.next;
+			bNext = b.next;
+		}
+		return head;
+	}
+	
+	
 }
