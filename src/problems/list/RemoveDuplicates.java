@@ -14,8 +14,27 @@ public class RemoveDuplicates {
 	private static final HashMap<Node, Node> HASHMAP = new HashMap<Node, Node>();
 
 	// https://www.geeksforgeeks.org/remove-duplicates-from-an-unsorted-linked-list/
+<<<<<<< HEAD
+	private static void removeDuplicatesUsingTwoPintersV1(Node head) {
+		if (null == head) {
+			return;
+		}
+		Node first = head;
+		Node second = head.next;
+		while (null != first) {
+			while(null != second){
+				if(first == second){
+					
+				}
+			}
+		}
+	}
+	
+	private static void remove(Node head) {
+=======
 	private static void removeDuplicatesUsingHashing(Node head) {
 		TreeMap<String, Node> TREEMAP = new TreeMap<String, Node>();
+>>>>>>> 2f7dceb5ea16b762a9a27662a4fe0fbf31f6cc2d
 		Node previous = null;
 		Node current = head;
 		while (null != current) {
@@ -102,10 +121,38 @@ public class RemoveDuplicates {
 		node8.next = node9;
 
 		print(head);
+<<<<<<< HEAD
+		// remove(head);
+		System.out.println("\n-----------");
+		removeDuplicatesUsingTwoPintersV1(head);
+		print(head);
+	}
+
+	private static void print(Node head) {
+		Node current = head;
+		while (null != current) {
+			System.out.print(" " + current);
+			current = current.next;
+		}
+	}
+
+	private static void printHash() {
+		System.out.println("\n-----------");
+		Set<Node> set = (Set<Node>) HASHMAP.keySet();
+		Iterator<Node> iterator = set.iterator();
+		while (iterator.hasNext()) {
+			Node node = iterator.next();
+			System.out.print(" " + node);
+		}
+
+	}
+
+=======
 		// removeDuplicatesUsingHashing(head);
 		// removeDuplicatesUsingTwoPointers(head);
 		removeDuplicatesUsingTwoPointers(head);
 		print(head);
 	}
 
+>>>>>>> 2f7dceb5ea16b762a9a27662a4fe0fbf31f6cc2d
 }
