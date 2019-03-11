@@ -32,11 +32,13 @@ public class Node implements Comparable<Node> {
 
 	@Override
 	public boolean equals(Object obj) {
+		System.out.println("equals() called ");
 		if (null == obj)
 			return false;
 		Node node = (Node) obj;
+
 		if (null != data) {
-			return data.equals(node.data);
+			return data == node.data;
 		} else {
 			return mData == node.mData;
 		}
