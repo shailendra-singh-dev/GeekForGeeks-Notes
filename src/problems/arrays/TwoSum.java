@@ -1,4 +1,5 @@
-package arrays;
+package data_structures.arrays;
+
 
 public class TwoSum {
 

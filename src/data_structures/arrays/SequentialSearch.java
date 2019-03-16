@@ -1,4 +1,4 @@
-package arrays;
+package data_structures.arrays;
 
 public class SequentialSearch {
     public static boolean contains(int[] a, int b) {

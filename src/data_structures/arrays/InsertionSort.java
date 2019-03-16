@@ -1,4 +1,4 @@
-package arrays;
+package data_structures.arrays;
 
 import java.security.Principal;
 import java.util.Arrays;

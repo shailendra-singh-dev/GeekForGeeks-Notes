@@ -1,4 +1,4 @@
-package problems.list;
+package problems.arrays;
 
 
 import java.util.ArrayList;
@@ -8,8 +8,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Set;
 
-import arrays.QuickSort;
-import arrays.SelectionSort;
 
 public class ConnectingFlights {
 
@@ -85,7 +83,7 @@ public class ConnectingFlights {
 			array[i++] = value;
 		}
 		
-		int[] sortedArray = SelectionSort.selectionSortDecreasingOrder(array);		
+		int[] sortedArray = data_structures.arrays.SelectionSort.selectionSortDecreasingOrder(array);		
 		ArrayList<Integer> newList = new ArrayList<Integer>();
 		for (int value : sortedArray) {
 			newList.add(value);
