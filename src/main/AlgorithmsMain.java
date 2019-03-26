@@ -1,12 +1,11 @@
 package main;
 
-import problems.list.MergeSort;
-import problems.tree.PrintLeftView;
+import problems.arrays.ContigousMaxSubArray;
+import problems.arrays.MinimumCostRopes;
 public class AlgorithmsMain {
 
-
 	public static void main(String[] args) {
-		PrintLeftView.test();
+		MinimumCostRopes.test();
 	}
 
 }
