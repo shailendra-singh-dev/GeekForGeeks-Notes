@@ -55,5 +55,13 @@ public class Node implements Comparable<Node> {
 			return mData - node.mData;
 		}
 	}
+	
+	public static void printList(Node head) {
+		Node current = head;
+		while (null != current) {
+			System.out.print(" " + current);
+			current = current.next;
+		}
+	}
 
 }
