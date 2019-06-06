@@ -1,11 +1,12 @@
 package main;
 
-import problems.arrays.ContigousMaxSubArray;
-import problems.arrays.MinimumCostRopes;
+import problems.arrays.StringReverse;
+import problems.threads.PrintEvenOdd;
 public class AlgorithmsMain {
 
 	public static void main(String[] args) {
-		MinimumCostRopes.test();
+		new PrintEvenOdd().test();
 	}
 
+	
 }

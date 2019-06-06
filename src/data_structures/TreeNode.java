@@ -40,4 +40,11 @@ public class TreeNode {
     }
     
     
+    @Override
+    public boolean equals(Object obj) {
+    	TreeNode treeNode = (TreeNode) obj;
+    	return mData == treeNode.mData; 
+    }
+    
+    
 }
