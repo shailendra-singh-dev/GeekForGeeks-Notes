@@ -2,77 +2,127 @@ package problems.threads;
 
 public class PrintEvenOdd {
 
-	public class PrintThread implements Runnable{
+	/*
+	 * https://java2blog.com/print-even-odd-numbers-threads-java/
+	 * 
+	 */
+	public class Printer {
 
-		private final Print print =new Print();
-		private int i ;
-		private int max;
-		
-		public PrintThread(int max) {
-			this.max = max;
+		boolean odd;
+		int count = 1;
+		int MAX = 20;
+
+		public void printOdd() {
+			synchronized (this) {
+				while (count < MAX) {
+					System.out.println("Checking odd loop");
+
+					while (!odd) {
+						try {
+							System.out.println("Odd waiting : " + count);
+							wait();
+							System.out.println("Notified odd :" + count);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+					System.out.println("Odd Thread :" + count);
+					count++;
+					odd = false;
+					notify();
+				}
+			}
 		}
-		
+
+		public void printEven() {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
+			synchronized (this) {
+				while (count < MAX) {
+					System.out.println("Checking even loop");
+
+					while (odd) {
+						try {
+							System.out.println("Even waiting: " + count);
+							wait();
+							System.out.println("Notified even:" + count);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+					System.out.println("Even thread :" + count);
+					count++;
+					odd = true;
+					notify();
+				}
+			}
+		}
+	}
+
+	public class OddEvenRunnable implements Runnable {
+
+		public int PRINT_NUMBERS_UPTO = 10;
+		int number = 1;
+		int remainder;
+		Object lock = new Object();
+
+		OddEvenRunnable(int remainder) {
+			this.remainder = remainder;
+		}
+
 		@Override
 		public void run() {
-			while(i < max) {
-				if(i %2 == 0) {
-					print.printEven(i);
-				}else {
-					print.printOdd(i);
+			while (number < PRINT_NUMBERS_UPTO) {
+				synchronized (lock) {
+					while (number % 2 != remainder) { // wait for numbers other than remainder
+						try {
+							lock.wait();
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+					System.out.println(Thread.currentThread().getName() + " " + number);
+					number++;
+					lock.notifyAll();
 				}
-				i++;
 			}
 		}
 	}
-	
-	public class Print {
-		volatile private boolean isOdd;
-		
-		synchronized public void printEven(int n) {
-			while(isOdd) {
-				try {
-					wait();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-			System.out.println(Thread.currentThread().getName()+":"+n);
-			isOdd = false;
-			notifyAll();
-		}
-		
-		synchronized public void printOdd(int n) {
-			while(!isOdd) {
-				try {
-					wait();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-			System.out.println(Thread.currentThread().getName()+":"+n);
-			isOdd = true;
-			notifyAll();
-		}
-	}
-	
+
 	public void test() {
-		Thread t1=new Thread(new PrintThread(10),"Even");
-		Thread t2=new Thread(new PrintThread(10),"Odd");
+		final Printer printer = new Printer();
+		printer.odd = true;
+
+		Thread t1 = new Thread("Even") {
+
+			@Override
+			public void run() {
+				printer.printEven();
+			}
+		};
+		Thread t2 = new Thread("Odd") {
+
+			@Override
+			public void run() {
+				printer.printOdd();
+			}
+		};
+
+		// Thread t1 = new Thread(new OddEvenRunnable(0), "Even");
+		// Thread t2 = new Thread(new OddEvenRunnable(1), "Odd");
+		
 		t1.start();
 		t2.start();
-		
+
 		try {
 			t1.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		try {
 			t2.join();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
 	}
-	
-	
+
 }
