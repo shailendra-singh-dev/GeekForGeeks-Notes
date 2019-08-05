@@ -1,6 +1,5 @@
 package problems.list;
 
-import com.sun.org.apache.regexp.internal.recompile;
 
 import data_structures.Node;
 
@@ -32,7 +31,7 @@ public class MergeSort {
 		Node finalList = temp;
 
 		while (null != a && null != b) {
-			if (a.mData < b.mData) {
+			if (a.data < b.data) {
 				temp.next = a;
 				finalList = a;
 				a = a.next;

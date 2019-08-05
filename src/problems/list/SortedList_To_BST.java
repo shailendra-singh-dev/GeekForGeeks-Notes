@@ -55,7 +55,7 @@ public class SortedList_To_BST {
 		Node mid = getMiddleNode(head);
 
 		// The mid becomes the root of the BST.
-		TreeNode node = new TreeNode(mid.mData);
+		TreeNode node = new TreeNode(mid.data);
 
 		// Base case when there is just one element in the linked list
 		if (head == mid) {

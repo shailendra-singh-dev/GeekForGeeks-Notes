@@ -7,27 +7,17 @@ public class Node implements Comparable<Node> {
 	public Node previous;
 	// data carried by this node.
 	// could be of any type you need.
-	public int mData;
-	public String data;
+	public int data;
 
 	// Node constructor
 	public Node(int _data) {
 		next = null;
-		mData = _data;
-	}
-
-	public Node(String _data) {
-		next = null;
-		data = _data;
+		this.data = _data;
 	}
 
 	@Override
 	public String toString() {
-		if (null != data) {
-			return "[" + data + "]";
-		} else {
-			return "[" + mData + "]";
-		}
+		return "[" + data + "]";
 	}
 
 	@Override
@@ -36,23 +26,20 @@ public class Node implements Comparable<Node> {
 		if (null == obj)
 			return false;
 		Node node = (Node) obj;
-
-		if (null != data) {
-			return data == node.data;
-		} else {
-			return mData == node.mData;
-		}
+		return data == node.data;
 	}
 
 	@Override
 	public int compareTo(Node obj) {
 		if (null == obj)
 			return 0;
-		Node node = (Node) obj;
-		if (null != data) {
-			return data.compareTo(node.data);
+
+		if (data > obj.data) {
+			return data - obj.data;
+		} else if (data < obj.data) {
+			return obj.data - data;
 		} else {
-			return mData - node.mData;
+			return 0;
 		}
 	}
 

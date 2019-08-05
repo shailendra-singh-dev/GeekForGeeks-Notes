@@ -23,7 +23,7 @@ public class Palindrome {
 	private boolean isSame(Node a, Node b) {
 		Node currentA = a, currentB = b;
 		while (null != currentA && null != currentB) {
-			if (!currentA.data.equals(currentB.data)) {
+			if (! (currentA.data == currentB.data)) {
 				return false;
 			}
 			currentA = currentA.next;
@@ -33,13 +33,13 @@ public class Palindrome {
 	}
 
 	public static void test() {
-		Node a = new Node("A");
-		Node b = new Node("B");
-		Node c = new Node("C");
-		Node d = new Node("C");
-		Node e = new Node("B");
-		Node f = new Node("A");
-		Node g = new Node("C");
+		Node a = new Node(1);
+		Node b = new Node(2);
+		Node c = new Node(3);
+		Node d = new Node(4);
+		Node e = new Node(5);
+		Node f = new Node(6);
+		Node g = new Node(7);
 
 		a.next = b;
 		b.next = c;

@@ -91,7 +91,7 @@ public class LinkedList {
 		Node current = head;
 		String output = "[";
 		while (current != null) {
-			output += "[" + current.mData + "],";
+			output += "[" + current.data + "],";
 			current = current.next;
 		}
 		output = output.substring(0, output.length() - 1);
@@ -99,17 +99,18 @@ public class LinkedList {
 		return output;
 	}
 
-	private void printList(Node node) {
+	public static void printList(Node node) {
 		Node current = node;
 		String output = "[";
 		while (current != null) {
-			output += "[" + current.mData + "],";
+			output += "[" + current.data + "],";
 			current = current.next;
 		}
 		output = output.substring(0, output.length() - 1);
 		output += "]";
 		System.out.println(output);
 	}
+	
 
 	public void addAtFront(final Node node) {
 		if (null == head) {
@@ -142,7 +143,7 @@ public class LinkedList {
 		}
 		Node previousNode = null;
 		Node current = head;
-		while (current.next != null && current.mData != node.mData) {
+		while (current.next != null && current.data != node.data) {
 			previousNode = current;
 			current = current.next;
 		}
@@ -263,9 +264,9 @@ public class LinkedList {
 		Node currentX = null;
 		Node currentY = null;
 
-		if (head.mData == nodeX.mData) {
+		if (head.data == nodeX.data) {
 			currentX = head;
-		} else if (head.mData == nodeY.mData) {
+		} else if (head.data == nodeY.data) {
 			currentY = head;
 		}
 
@@ -276,12 +277,12 @@ public class LinkedList {
 			if (null == current) {
 				break;
 			}
-			if (current.mData == nodeX.mData) {
+			if (current.data == nodeX.data) {
 				prevX = prev;
 				currentX = current;
 			}
 
-			if (current.mData == nodeY.mData) {
+			if (current.data == nodeY.data) {
 				prevY = prev;
 				currentY = current;
 			}
@@ -366,7 +367,7 @@ public class LinkedList {
 		Node head = new Node(-1);
 		Node current = head;
 		while (firstListNode != null && secondListNode != null) {
-			if (firstListNode.mData <= secondListNode.mData) {
+			if (firstListNode.data <= secondListNode.data) {
 				current.next = firstListNode;
 				firstListNode = firstListNode.next;
 			} else {
@@ -398,7 +399,7 @@ public class LinkedList {
 			return firstListNode;
 		}
 		Node head = new Node(-1);
-		if (firstListNode.mData <= secondListNode.mData) {
+		if (firstListNode.data <= secondListNode.data) {
 			head = firstListNode;
 			head.next = getMergedSortedListRecursion(firstListNode.next,
 					secondListNode);
