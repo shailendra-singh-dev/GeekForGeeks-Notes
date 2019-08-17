@@ -51,7 +51,7 @@ public class Palindrome {
 		Node currentA = a;
 		Node currentB = b;
 		while (null != currentA && null != currentB) {
-			if (!currentA.data.equals(currentB.data)) {
+			if (! (currentA.data == currentB.data)) {
 				return false;
 			}
 			currentA = currentA.next;

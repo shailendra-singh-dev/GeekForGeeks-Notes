@@ -119,12 +119,23 @@ public class CircularLinkedList {
 						break;
 					}
 				} while (current != mHead);
-				previus.next = next;
+				current.next = next;
 			}
 		}
 		mSize--;
 	}
 
+	private static void remove(Node head,Node node) {
+		Node current = head;
+		while(current !=null) {
+			if(current.next == node) {
+				current.next = current.next.next;
+				break;
+			}
+			current = current.next;
+		}
+	}
+	
 	public void test() {
 		Node head = new Node(10);
 		insertAtStart(head);
@@ -146,9 +157,9 @@ public class CircularLinkedList {
 		// System.out.println("\n-----deleteHead()------");
 		// deleteHead();
 		// print();
-		// System.out.println("\n-----deleteNode(node2)------");
-		// deleteNode(head);
-		// print();
+		 System.out.println("\n-----deleteNode(node2)------");
+		 deleteNode(head);
+		 print();
 
 		System.out.println("\n-----getElement(3)------");
 		Node foundNode = getElement(5);

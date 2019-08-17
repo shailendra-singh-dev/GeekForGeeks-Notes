@@ -12,19 +12,19 @@ public class MergeTwoSortedList {
 		if (headB == null)
 			return headA;
 
-		Node head = headA.mData < headB.mData ? headA : headB;
+		Node head = headA.data < headB.data ? headA : headB;
 
 		Node currA = headA, currB = headB;
 		while (currA != null && currB != null) {
-			if (currA.mData < currB.mData) {
+			if (currA.data < currB.data) {
 				Node aNext = currA.next;
-				if (aNext == null || aNext.mData > currB.mData) {
+				if (aNext == null || aNext.data > currB.data) {
 					currA.next = currB;
 				}
 				currA = aNext;
 			} else {
 				Node bNext = currB.next;
-				if (bNext == null || bNext.mData > currA.mData) {
+				if (bNext == null || bNext.data > currA.data) {
 					currB.next = currA;
 				}
 				currB = bNext;
@@ -63,10 +63,10 @@ public class MergeTwoSortedList {
 	
 	private static Node getMergedListV2() {
 		Node head = null;
-		if(a.mData <= b.mData) {
+		if(a.data <= b.data) {
 			head = a;
 			head.next = b;
-		}else if(b.mData <= a.mData) {
+		}else if(b.data <= a.data) {
 			head = b;
 			head.next= a;
 		}
@@ -75,11 +75,11 @@ public class MergeTwoSortedList {
 		Node bNext = b.next;
 		
 		while (null != aNext && null != bNext) {
-			if (aNext.mData >= head.mData && aNext.mData <= bNext.mData) {
+			if (aNext.data >= head.data && aNext.data <= bNext.data) {
 				head.next = aNext;
 				head = head.next;
 			}
-			if (bNext.mData >= head.mData && bNext.mData <= aNext.mData) {
+			if (bNext.data >= head.data && bNext.data <= aNext.data) {
 				head.next = bNext;
 				head = head.next;
 			}

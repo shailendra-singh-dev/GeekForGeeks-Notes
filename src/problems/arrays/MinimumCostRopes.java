@@ -25,10 +25,22 @@ public class MinimumCostRopes {
 		}
 		return res;
 	}
+	
+	private int getMinRopeLength(int[] a) {
+		for (int i = 0; i < a.length; i++) {
+			priorityQueue.add(a[i]);
+		}
+		while (priorityQueue.size() > 1) {
+			int b = priorityQueue.poll();
+			int c = priorityQueue.poll();
+			priorityQueue.add(b + c);
+		}
+		return priorityQueue.poll();
+	}
 
 	public static void test() {
 		MinimumCostRopes costRopes = new MinimumCostRopes();
-		System.out.println("Min cost:" + costRopes.getMinimumCost(new int[] { 4, 3, 6, 2 }));
+		System.out.println("Min cost:" + costRopes.getMinRopeLength(new int[] { 4, 3, 6, 2 }));
 
 	}
 }

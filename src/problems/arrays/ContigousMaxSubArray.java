@@ -67,6 +67,7 @@ public class ContigousMaxSubArray {
 	public static void test() {
 		int[] a = new int[] { -2, -3, 4, -1, -2, 1, 5, -3 };
 		ContigousMaxSubArray contigousMaxSubArray = new ContigousMaxSubArray();
-		System.out.println("getMaxSumSubArray:" + Arrays.toString(contigousMaxSubArray.getMaxSumSubArray(a)));
+//		System.out.println("getMaxSumSubArray:" + Arrays.toString(contigousMaxSubArray.getMaxSumSubArray(a)));
+		System.out.println("getMaxSumV2:"+ contigousMaxSubArray.getMaxSumV2(a));
 	}
 }

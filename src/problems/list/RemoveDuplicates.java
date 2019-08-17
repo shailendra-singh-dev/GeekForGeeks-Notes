@@ -15,7 +15,7 @@ public class RemoveDuplicates {
 	// https://www.geeksforgeeks.org/remove-duplicates-from-an-unsorted-linked-list/
 
 	private static void removeDuplicatesUsingHashing(Node head) {
-		TreeMap<String, Node> TREEMAP = new TreeMap<String, Node>();
+		TreeMap<Integer, Node> TREEMAP = new TreeMap<Integer, Node>();
 		Node previous = null;
 		Node current = head;
 		while (null != current) {
@@ -81,15 +81,15 @@ public class RemoveDuplicates {
 	}
 
 	public static void test() {
-		Node node1 = new Node("F");
-		Node node2 = new Node("O");
-		Node node3 = new Node("L");
-		Node node4 = new Node("L");
-		Node node5 = new Node("O");
-		Node node6 = new Node("W");
-		Node node7 = new Node(" ");
-		Node node8 = new Node("U");
-		Node node9 = new Node("P");
+		Node node1 = new Node(1);
+		Node node2 = new Node(2);
+		Node node3 = new Node(3);
+		Node node4 = new Node(4);
+		Node node5 = new Node(5);
+		Node node6 = new Node(6);
+		Node node7 = new Node(0);
+		Node node8 = new Node(1);
+		Node node9 = new Node(2);
 
 		Node head = node1;
 		node1.next = node2;
