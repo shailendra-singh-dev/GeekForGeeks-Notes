@@ -32,14 +32,14 @@ public class Palindrome {
 		return isSame(head, getReversedList(head));
 	}
 
-	private Node getReversedList(Node head) {
+
+	public Node getReversedList(Node head) {
 		Node newHead = null;
-		Node current = head;
-		while (null != current && null != newHead) {
-			Node node = new Node(current.data);
+		while (null != head) {
+			Node node = new Node(head.data);
+			node.next = newHead;
 			newHead = node;
-			newHead.next = current;
-			current = current.next;
+			head = head.next;
 		}
 		return newHead;
 	}
@@ -51,7 +51,7 @@ public class Palindrome {
 		Node currentA = a;
 		Node currentB = b;
 		while (null != currentA && null != currentB) {
-			if (currentA != currentB) {
+			if (!currentA.data.equals(currentB.data)) {
 				return false;
 			}
 			currentA = currentA.next;
@@ -79,4 +79,6 @@ public class Palindrome {
 		System.out.println("\nisPalindromeUsingStack():"
 				+ palindrome.isPalindromeUsingStack(node1));
 	}
+	
+	
 }
