@@ -40,6 +40,17 @@ public class Node implements Comparable<Node> {
 			return obj.data - data;
 		} else {
 			return 0;
+<<<<<<< HEAD
+		}
+	}
+	
+	public static void printList(Node head) {
+		Node current = head;
+		while (null != current) {
+			System.out.print(" " + current);
+			current = current.next;
+=======
+>>>>>>> dbb9ffad639ed2eb964b90c5c413c20272c1e5ef
 		}
 	}
 
