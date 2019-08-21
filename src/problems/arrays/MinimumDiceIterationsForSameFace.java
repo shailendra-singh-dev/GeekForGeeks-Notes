@@ -31,7 +31,7 @@ public class MinimumDiceIterationsForSameFace {
 	// BigO(n^2) Algorithm
 	private static int getCountV2(final int[] a) {
 		int minCount = Integer.MAX_VALUE;
-		for (int i = 0; i < a.length - 1; i++) {
+		for (int i = 0; i < a.length; i++) {
 			int currentElement = a[i];
 			int count = 0;
 			for (int j = 0; j < a.length; j++) {
