@@ -11,7 +11,7 @@ public class Palindrome {
 	 */
 
 	private boolean isPalindromeUsingStack(Node head) {
-		Stack<String> stack = new Stack<String>(100);
+		Stack<Integer> stack = new Stack<Integer>(100);
 		Node current = head;
 		while (null != current) {
 			stack.push(current.data);
@@ -19,8 +19,8 @@ public class Palindrome {
 		}
 		current = head;
 		while (!stack.isEmpty() && null != current) {
-			String data = stack.pop();
-			if (!data.equals(current.data)) {
+			int data = stack.pop();
+			if (data == current.data) {
 				return false;
 			}
 			current = current.next;
@@ -61,8 +61,6 @@ public class Palindrome {
 	}
 
 	public static void test() {
-<<<<<<< HEAD
-=======
 		Node a = new Node(1);
 		Node b = new Node(2);
 		Node c = new Node(3);
@@ -77,25 +75,9 @@ public class Palindrome {
 		d.next = e;
 		e.next = f;
 		f.next = g;
-
->>>>>>> dbb9ffad639ed2eb964b90c5c413c20272c1e5ef
-		Palindrome palindrome = new Palindrome();
-		Node node1 = new Node("A");
-		Node node2 = new Node("B");
-		Node node3 = new Node("C");
-		Node node4 = new Node("C");
-		Node node5 = new Node("B");
-		Node node6 = new Node("A");
-
-		node1.next = node2;
-		node2.next = node3;
-		node3.next = node4;
-		node4.next = node5;
-		node5.next = node6;
-
-		Node.printList(node1);
+		Node.printList(a);
 		System.out.println("\nisPalindromeUsingStack():"
-				+ palindrome.isPalindromeUsingStack(node1));
+				+ new Palindrome().isPalindromeUsingStack(a));
 	}
 	
 	
