@@ -32,6 +32,19 @@ public class BinarySearchTree {
 			}
 		}
 	}
+	
+	public TreeNode insertWithRecursionV2(final TreeNode rootNode, final TreeNode treeNode) {
+	   if(null == rootNode) {
+		   return treeNode;
+	   }
+	   if(treeNode.mData < rootNode.mData) {
+		   rootNode.mLeftNode = insertWithRecursionV2(rootNode.mLeftNode,treeNode);
+	   }
+	   if(treeNode.mData > rootNode.mData) {
+		   rootNode.mRightNode = insertWithRecursionV2(rootNode.mRightNode,treeNode);
+	   }
+	   return rootNode;
+	}	
 
 	public void insert(final TreeNode rootNode, final TreeNode treeNode) {
 		if (null == rootNode) {
@@ -72,7 +85,21 @@ public class BinarySearchTree {
 		return null;
 	}
 
-	public void constructTreee() {
+	public TreeNode searchItemV2(final TreeNode rootNode, final TreeNode treeNode) {
+		if(null == rootNode) {
+			return null;
+		}
+		if(rootNode.mData == treeNode.mData) {
+			System.out.println("Found element");
+			return treeNode;
+		}
+		if(treeNode.mData < rootNode.mData) {
+			searchItemV2(rootNode.mLeftNode,treeNode);
+		}
+		return searchItemV2(rootNode.mRightNode,treeNode);
+	}
+	
+	public void test() {
 		/*
 		 * Let us create following BST 50
 		 * 							  /  \ 
@@ -98,15 +125,24 @@ public class BinarySearchTree {
 		// insert(rootNode, node5);
 		// insert(rootNode, node6);
 
-		insertWithRecursion(rootNode, node1);
-		insertWithRecursion(rootNode, node2);
-		insertWithRecursion(rootNode, node3);
-		insertWithRecursion(rootNode, node4);
-		insertWithRecursion(rootNode, node5);
-		insertWithRecursion(rootNode, node6);
+//		insertWithRecursion(rootNode, node1);
+//		insertWithRecursion(rootNode, node2);
+//		insertWithRecursion(rootNode, node3);
+//		insertWithRecursion(rootNode, node4);
+//		insertWithRecursion(rootNode, node5);
+//		insertWithRecursion(rootNode, node6);
+
+		insertWithRecursionV2(rootNode, node1);
+		insertWithRecursionV2(rootNode, node2);
+		insertWithRecursionV2(rootNode, node3);
+		insertWithRecursionV2(rootNode, node4);
+		insertWithRecursionV2(rootNode, node5);
+		insertWithRecursionV2(rootNode, node6);
+		
+		searchItemV2(rootNode,node3);
 	}
 
-	private void setRootNode(TreeNode rootNode) {
+	public void setRootNode(TreeNode rootNode) {
 		mRootNode = rootNode;
 	}
 
@@ -141,14 +177,5 @@ public class BinarySearchTree {
 		return mRootNode;
 	}
 	
-	private TreeNode search(TreeNode leftNode ,TreeNode node){
-		if(node.getData() == mRootNode.getData()){
-			return node;
-		}
-		if(node.getData() < leftNode.getData()){
-			search(leftNode.getLeftNode(), node);
-		}
-		return search(leftNode.getRightNode(), node);
-	}
 
 }
