@@ -18,11 +18,6 @@ public class PrintUniqueRowsInMatrix {
 	
 	BinarySearchTree binarySearchTree = new BinarySearchTree();
 	
-	private class BSTNode {
-		private int row;
-		private int decimalValue;
-	}
-	
 	private void uniqueRowsV2(int[][] M) {
 		TreeNode rootNode = null;
 		for (int i = 0; i < M.length; i++) {
@@ -40,7 +35,7 @@ public class PrintUniqueRowsInMatrix {
 			}
 			binarySearchTree.insertWithRecursionV2(rootNode, new TreeNode(nodeInt));
 		}		
-//		binarySearchTree.preOrderTraversal(rootNode);
+		binarySearchTree.preOrderTraversal(rootNode);
 	}
 	
 	private int binaryToDecimal(int n) {
@@ -50,7 +45,7 @@ public class PrintUniqueRowsInMatrix {
 		while(temp > 0) {
 			int last_digit= temp % 10;
 			temp = temp/10;
-			dec_value = base*last_digit;
+			dec_value += base*last_digit;
 			base = base*2;
 		}
 		return dec_value;

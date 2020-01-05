@@ -2,8 +2,6 @@ package data_structures.queue;
 
 import java.util.Arrays;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
-
 public class QueueUsingArray<E extends Object> {
 
 	private static final int MAX_SIZE = 1000;

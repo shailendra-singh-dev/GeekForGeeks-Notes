@@ -8,7 +8,7 @@ import problems.threads.PrintEvenOdd;
 public class AlgorithmsMain {
 
 	public static void main(String[] args) {
-		new PrintUniqueRowsInMatrix().test();
+		new BinarySearchTree().test();
 	}
-
+	
 }

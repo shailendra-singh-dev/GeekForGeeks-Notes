@@ -2,7 +2,6 @@ package problems.list;
 
 import data_structures.Node;
 import data_structures.TreeNode;
-import sun.security.action.GetBooleanAction;
 
 public class SortedList_To_BST {
 

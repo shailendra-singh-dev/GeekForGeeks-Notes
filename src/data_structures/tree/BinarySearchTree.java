@@ -22,13 +22,13 @@ public class BinarySearchTree {
 			if (rootNode.mLeftNode == null) {
 				rootNode.mLeftNode = treeNode;
 			} else {
-				insert(rootNode.mLeftNode, treeNode);
+				insertIterative(rootNode.mLeftNode, treeNode);
 			}
 		} else if (treeNode.getData() > rootNode.getData()) {
 			if (rootNode.mRightNode == null) {
 				rootNode.mRightNode = treeNode;
 			} else {
-				insert(rootNode.mRightNode, treeNode);
+				insertIterative(rootNode.mRightNode, treeNode);
 			}
 		}
 	}
@@ -46,7 +46,7 @@ public class BinarySearchTree {
 	   return rootNode;
 	}	
 
-	public void insert(final TreeNode rootNode, final TreeNode treeNode) {
+	public void insertIterative(final TreeNode rootNode, final TreeNode treeNode) {
 		if (null == rootNode) {
 			return;
 		}
@@ -99,6 +99,38 @@ public class BinarySearchTree {
 		return searchItemV2(rootNode.mRightNode,treeNode);
 	}
 	
+	private TreeNode deleteRecursive(TreeNode rootNode, TreeNode treeNode) {
+		if(rootNode == null) {
+			return rootNode;
+		}
+		if(treeNode.mData < rootNode.mData) {
+			rootNode.mLeftNode = deleteRecursive(rootNode.mLeftNode,treeNode);
+		}else if(treeNode.mData > rootNode.mData) {
+			rootNode.mRightNode = deleteRecursive(rootNode.mRightNode, treeNode);
+		}else {
+		   // Node with 1 child. 	
+		   if(rootNode.mLeftNode ==null) {
+			   return rootNode.mRightNode;
+		   }else if(rootNode.mRightNode ==null){
+			   return rootNode.mLeftNode;
+		   }
+		   //Node with 2 Child
+		   rootNode.mData = minRightSubTree(rootNode.mRightNode);
+		   rootNode.mRightNode = deleteRecursive(rootNode.mRightNode,rootNode);
+		}
+		return rootNode;
+	}
+	
+	
+	private int minRightSubTree(TreeNode rootNode) {
+		int minValue = rootNode.mData;
+		while(rootNode.mLeftNode != null) {
+			minValue = rootNode.mLeftNode.mData;
+			rootNode = rootNode.mLeftNode;
+		}
+		return minValue;
+	}
+
 	public void test() {
 		/*
 		 * Let us create following BST 50
@@ -139,7 +171,21 @@ public class BinarySearchTree {
 		insertWithRecursionV2(rootNode, node5);
 		insertWithRecursionV2(rootNode, node6);
 		
-		searchItemV2(rootNode,node3);
+//		rootNode = searchItemV2(rootNode,node3);
+//		if(rootNode != null)
+//			System.out.println("Element "+node3+" found");
+//		else
+//			System.out.println("Element "+node3+" Not found");
+		
+		System.out.println("--------inOrderTraversal---------------");
+		inOrderTraversal(rootNode);
+		System.out.println("\n--------deleteRecursive---------------");
+		rootNode = deleteRecursive(rootNode, node6);
+		System.out.println("----------inOrderTraversal-------------");
+		inOrderTraversal(rootNode);
+		rootNode = deleteRecursive(rootNode, node1);
+		System.out.println("----------inOrderTraversal-------------");
+		inOrderTraversal(rootNode);
 	}
 
 	public void setRootNode(TreeNode rootNode) {
