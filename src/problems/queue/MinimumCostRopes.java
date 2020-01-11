@@ -1,4 +1,4 @@
-package problems.arrays;
+package problems.queue;
 
 import java.util.PriorityQueue;
 
@@ -12,7 +12,7 @@ public class MinimumCostRopes {
 		}
 
 		for (int i = 0; i < a.length; i++) {
-			priorityQueue.add(a[i]);
+			priorityQueue.offer(a[i]);
 		}
 
 		int res = 0;
@@ -21,19 +21,19 @@ public class MinimumCostRopes {
 			int q = priorityQueue.poll();
 			res += (p + q);
 			System.out.println("p:"+p+",q:"+q+",res:"+res);
-			priorityQueue.add(p + q);
+			priorityQueue.offer(p + q);
 		}
 		return res;
 	}
 	
 	private int getMinRopeLength(int[] a) {
 		for (int i = 0; i < a.length; i++) {
-			priorityQueue.add(a[i]);
+			priorityQueue.offer(a[i]);
 		}
 		while (priorityQueue.size() > 1) {
 			int b = priorityQueue.poll();
 			int c = priorityQueue.poll();
-			priorityQueue.add(b + c);
+			priorityQueue.offer(b + c);
 		}
 		return priorityQueue.poll();
 	}

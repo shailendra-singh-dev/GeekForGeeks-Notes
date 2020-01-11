@@ -35,7 +35,7 @@ public class PrintUniqueRowsInMatrix {
 			}
 			binarySearchTree.insertWithRecursionV2(rootNode, new TreeNode(nodeInt));
 		}		
-		binarySearchTree.preOrderTraversal(rootNode);
+		binarySearchTree.inOrderTraversal(rootNode);
 	}
 	
 	private int binaryToDecimal(int n) {
@@ -52,27 +52,26 @@ public class PrintUniqueRowsInMatrix {
 		
 	}
 	
-	
 	//Time complexity: O( ROW^2 x COL )
 	private void uniqueRowsV1(int[][] M) {
-		boolean[] nonUnique = new boolean[M.length];
+		boolean[] duplicates = new boolean[M.length];
 		
 		for (int i = 0; i < M.length; i++) {
 			for (int j = 0; j< M.length; j++) {
 				if(i!=j) {
 					if(isSame(i, j, M)) {
-						nonUnique[i] = true;
+						duplicates[i] = true;
 						break;
 					}	
 				}
 				
 			}
 		}		
-		System.out.println(Arrays.toString(nonUnique));
+		System.out.println(Arrays.toString(duplicates));
 		
 		for(int i=0;i<M.length;i++) {
 			for(int j=0;j<M[0].length;j++) {
-				if(!nonUnique[i]) {
+				if(!duplicates[i]) {
 					printRow(i,M);
 					break;
 				}

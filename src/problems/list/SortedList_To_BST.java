@@ -63,8 +63,8 @@ public class SortedList_To_BST {
 
 		// Recursively form balanced BSTs using the left and right halves of the
 		// original list.
-		node.mLeftNode = sortedListToBST(head);
-		node.mRightNode = sortedListToBST(mid.next);
+		node.left = sortedListToBST(head);
+		node.right = sortedListToBST(mid.next);
 
 		return node;
 	}

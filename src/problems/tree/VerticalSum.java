@@ -17,14 +17,14 @@ public class VerticalSum {
 		TreeNode node5 = new TreeNode(5);
 		TreeNode node6 = new TreeNode(6);
 
-		root.mLeftNode = node1;
-		root.mRightNode = node2;
+		root.left = node1;
+		root.right = node2;
 
-		node1.mLeftNode = node3;
-		node1.mRightNode = node4;
+		node1.left = node3;
+		node1.right = node4;
 
-		node2.mLeftNode = node5;
-		node2.mRightNode = node6;
+		node2.left = node5;
+		node2.right = node6;
 
 		/**
 		 *               0 
@@ -44,8 +44,8 @@ public class VerticalSum {
 		if(null == root) {
 			return;
 		}
-		findVerticalSumRecursive(map,root.mLeftNode,HD-1);
-		findVerticalSumRecursive(map,root.mRightNode,HD+1);
+		findVerticalSumRecursive(map,root.left,HD-1);
+		findVerticalSumRecursive(map,root.right,HD+1);
 		int lastSum = map.get(HD) != null ? map.get(HD):0;
 		map.put(HD, lastSum + root.getData());		
 	}

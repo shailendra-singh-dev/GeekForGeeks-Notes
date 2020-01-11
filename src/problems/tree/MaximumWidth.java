@@ -20,14 +20,14 @@ public class MaximumWidth {
 		TreeNode node5 = new TreeNode(5);
 		TreeNode node6 = new TreeNode(6);
 
-		root.mLeftNode = node1;
-		root.mRightNode = node2;
+		root.left = node1;
+		root.right = node2;
 
-		node1.mLeftNode = node3;
-		node1.mRightNode = node4;
+		node1.left = node3;
+		node1.right = node4;
 
-		node2.mLeftNode = node5;
-		node2.mRightNode = node6;
+		node2.left = node5;
+		node2.right = node6;
 
 		/**
 		 *               0 
@@ -51,11 +51,11 @@ public class MaximumWidth {
 			max = Math.max(count, max);
 			while(count-- > 0) {
 				TreeNode temp = queue.remove();
-				if(null != temp.mLeftNode) {
-					queue.add(temp.mLeftNode);
+				if(null != temp.left) {
+					queue.add(temp.left);
 				}
-				if(null != temp.mRightNode) {
-					queue.add(temp.mRightNode);
+				if(null != temp.right) {
+					queue.add(temp.right);
 				}
 			}			
 		}

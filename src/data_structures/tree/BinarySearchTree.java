@@ -19,16 +19,16 @@ public class BinarySearchTree {
 			return;
 		}
 		if (treeNode.getData() < rootNode.getData()) {
-			if (rootNode.mLeftNode == null) {
-				rootNode.mLeftNode = treeNode;
+			if (rootNode.left == null) {
+				rootNode.left = treeNode;
 			} else {
-				insertIterative(rootNode.mLeftNode, treeNode);
+				insertIterative(rootNode.left, treeNode);
 			}
 		} else if (treeNode.getData() > rootNode.getData()) {
-			if (rootNode.mRightNode == null) {
-				rootNode.mRightNode = treeNode;
+			if (rootNode.right == null) {
+				rootNode.right = treeNode;
 			} else {
-				insertIterative(rootNode.mRightNode, treeNode);
+				insertIterative(rootNode.right, treeNode);
 			}
 		}
 	}
@@ -37,11 +37,11 @@ public class BinarySearchTree {
 	   if(null == rootNode) {
 		   return treeNode;
 	   }
-	   if(treeNode.mData < rootNode.mData) {
-		   rootNode.mLeftNode = insertWithRecursionV2(rootNode.mLeftNode,treeNode);
+	   if(treeNode.data < rootNode.data) {
+		   rootNode.left = insertWithRecursionV2(rootNode.left,treeNode);
 	   }
-	   if(treeNode.mData > rootNode.mData) {
-		   rootNode.mRightNode = insertWithRecursionV2(rootNode.mRightNode,treeNode);
+	   if(treeNode.data > rootNode.data) {
+		   rootNode.right = insertWithRecursionV2(rootNode.right,treeNode);
 	   }
 	   return rootNode;
 	}	
@@ -56,14 +56,14 @@ public class BinarySearchTree {
 				if (currentNode.getLeftNode() != null) {
 					currentNode = currentNode.getLeftNode();
 				} else {
-					currentNode.mLeftNode = treeNode;
+					currentNode.left = treeNode;
 					break;
 				}
 			} else if (treeNode.getData() > currentNode.getData()) {
 				if (currentNode.getRightNode() != null) {
 					currentNode = currentNode.getRightNode();
 				} else {
-					currentNode.mRightNode = treeNode;
+					currentNode.right = treeNode;
 					break;
 				}
 			}
@@ -89,44 +89,44 @@ public class BinarySearchTree {
 		if(null == rootNode) {
 			return null;
 		}
-		if(rootNode.mData == treeNode.mData) {
+		if(rootNode.data == treeNode.data) {
 			System.out.println("Found element");
 			return treeNode;
 		}
-		if(treeNode.mData < rootNode.mData) {
-			searchItemV2(rootNode.mLeftNode,treeNode);
+		if(treeNode.data < rootNode.data) {
+			searchItemV2(rootNode.left,treeNode);
 		}
-		return searchItemV2(rootNode.mRightNode,treeNode);
+		return searchItemV2(rootNode.right,treeNode);
 	}
 	
 	private TreeNode deleteRecursive(TreeNode rootNode, TreeNode treeNode) {
 		if(rootNode == null) {
 			return rootNode;
 		}
-		if(treeNode.mData < rootNode.mData) {
-			rootNode.mLeftNode = deleteRecursive(rootNode.mLeftNode,treeNode);
-		}else if(treeNode.mData > rootNode.mData) {
-			rootNode.mRightNode = deleteRecursive(rootNode.mRightNode, treeNode);
+		if(treeNode.data < rootNode.data) {
+			rootNode.left = deleteRecursive(rootNode.left,treeNode);
+		}else if(treeNode.data > rootNode.data) {
+			rootNode.right = deleteRecursive(rootNode.right, treeNode);
 		}else {
 		   // Node with 1 child. 	
-		   if(rootNode.mLeftNode ==null) {
-			   return rootNode.mRightNode;
-		   }else if(rootNode.mRightNode ==null){
-			   return rootNode.mLeftNode;
+		   if(rootNode.left ==null) {
+			   return rootNode.right;
+		   }else if(rootNode.right ==null){
+			   return rootNode.left;
 		   }
 		   //Node with 2 Child
-		   rootNode.mData = minRightSubTree(rootNode.mRightNode);
-		   rootNode.mRightNode = deleteRecursive(rootNode.mRightNode,rootNode);
+		   rootNode.data = minRightSubTree(rootNode.right);
+		   rootNode.right = deleteRecursive(rootNode.right,rootNode);
 		}
 		return rootNode;
 	}
 	
 	
 	private int minRightSubTree(TreeNode rootNode) {
-		int minValue = rootNode.mData;
-		while(rootNode.mLeftNode != null) {
-			minValue = rootNode.mLeftNode.mData;
-			rootNode = rootNode.mLeftNode;
+		int minValue = rootNode.data;
+		while(rootNode.left != null) {
+			minValue = rootNode.left.data;
+			rootNode = rootNode.left;
 		}
 		return minValue;
 	}
@@ -197,16 +197,16 @@ public class BinarySearchTree {
 			return;
 		}
 		System.out.print(treeNode.getData() + ",");
-		preOrderTraversal(treeNode.mLeftNode);
-		preOrderTraversal(treeNode.mRightNode);
+		preOrderTraversal(treeNode.left);
+		preOrderTraversal(treeNode.right);
 	}
 
 	public void postOrderTraversal(final TreeNode treeNode) {
 		if (null == treeNode) {
 			return;
 		}
-		postOrderTraversal(treeNode.mLeftNode);
-		postOrderTraversal(treeNode.mRightNode);
+		postOrderTraversal(treeNode.left);
+		postOrderTraversal(treeNode.right);
 		System.out.print(treeNode.getData() + ",");
 	}
 
@@ -214,9 +214,9 @@ public class BinarySearchTree {
 		if (null == treeNode) {
 			return;
 		}
-		inOrderTraversal(treeNode.mLeftNode);
+		inOrderTraversal(treeNode.left);
 		System.out.print(treeNode.getData() + ",");
-		inOrderTraversal(treeNode.mRightNode);
+		inOrderTraversal(treeNode.right);
 	}
 
 	public TreeNode getRootNode() {

@@ -2,36 +2,36 @@ package data_structures;
 
 public class TreeNode {
 
-    public TreeNode mLeftNode;
-    public TreeNode mRightNode;
-    public int mData;
+    public TreeNode left;
+    public TreeNode right;
+    public int data;
     
     public TreeNode(int data){
-	mData = data;
+	   this.data = data;
     }
 
     public int getData() {
-        return mData;
+        return data;
     }
 
     public void setData(int mIntData) {
-        this.mData = mIntData;
+        this.data = mIntData;
     }
 
     public TreeNode getLeftNode() {
-        return mLeftNode;
+        return left;
     }
 
     public TreeNode getRightNode() {
-        return mRightNode;
+        return right;
     }
 
     public void setLeftNode(TreeNode mLeftNode) {
-        this.mLeftNode = mLeftNode;
+        this.left = mLeftNode;
     }
 
     public void setRightNode(TreeNode mRightNode) {
-        this.mRightNode = mRightNode;
+        this.right = mRightNode;
     }
     
     @Override
@@ -43,7 +43,7 @@ public class TreeNode {
     @Override
     public boolean equals(Object obj) {
     	TreeNode treeNode = (TreeNode) obj;
-    	return mData == treeNode.mData; 
+    	return data == treeNode.data; 
     }
     
     
