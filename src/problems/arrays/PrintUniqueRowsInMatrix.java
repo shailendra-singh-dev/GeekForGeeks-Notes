@@ -1,11 +1,9 @@
 package problems.arrays;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
-import data_structures.TreeNode;
-import data_structures.tree.BinarySearchTree;
+import data_structures.BSTNode;
+import data_structures.tree.MatrixBinarySearchTree;
 
 /**
  * https://www.geeksforgeeks.org/print-unique-rows/
@@ -16,10 +14,10 @@ import data_structures.tree.BinarySearchTree;
 
 public class PrintUniqueRowsInMatrix {
 	
-	BinarySearchTree binarySearchTree = new BinarySearchTree();
+	MatrixBinarySearchTree binarySearchTree = new MatrixBinarySearchTree();
 	
 	private void uniqueRowsV2(int[][] M) {
-		TreeNode rootNode = null;
+		BSTNode rootNode = null;
 		for (int i = 0; i < M.length; i++) {
 			String nodeStr = "";
 			for (int j = 0; j < M[0].length; j++) {
@@ -27,13 +25,12 @@ public class PrintUniqueRowsInMatrix {
 			}
 			int nodeInt = Integer.parseInt(nodeStr);
 			nodeInt= binaryToDecimal(nodeInt);
-			System.out.println(nodeInt);
-			rootNode = binarySearchTree.getRootNode();
-			
-			if(null == rootNode) {
-				binarySearchTree.setRootNode(new TreeNode(nodeInt));	
+			BSTNode bstNode = new BSTNode(nodeInt);
+			System.out.println(bstNode);
+			BSTNode insertedNode = binarySearchTree.insert(rootNode,bstNode);
+			if(insertedNode == bstNode) {
+				binarySearchTree.delete(rootNode, bstNode);
 			}
-			binarySearchTree.insertWithRecursionV2(rootNode, new TreeNode(nodeInt));
 		}		
 		binarySearchTree.inOrderTraversal(rootNode);
 	}
@@ -96,16 +93,17 @@ public class PrintUniqueRowsInMatrix {
 		System.out.println();
 	}
 	
-	public void test() {
+	public static void test() {
 		int[][] M = {
 				{0, 1, 0, 0, 1},  
                 {1, 0, 1, 1, 0},  
                 {0, 1, 0, 0, 1},  
                 {1, 0, 1, 0, 0}
                }; 
-		uniqueRowsV1(M);
+		PrintUniqueRowsInMatrix printUniqueRowsInMatrix= new PrintUniqueRowsInMatrix();
+		printUniqueRowsInMatrix.uniqueRowsV1(M);
 		System.out.println("---------------------------------");
-		uniqueRowsV2(M);
+		printUniqueRowsInMatrix.uniqueRowsV2(M);
 	}
 
 }

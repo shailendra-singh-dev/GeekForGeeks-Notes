@@ -99,7 +99,7 @@ public class BinarySearchTree {
 		return searchItemV2(rootNode.right,treeNode);
 	}
 	
-	private TreeNode deleteRecursive(TreeNode rootNode, TreeNode treeNode) {
+	public TreeNode deleteRecursive(TreeNode rootNode, TreeNode treeNode) {
 		if(rootNode == null) {
 			return rootNode;
 		}
