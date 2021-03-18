@@ -1,4 +1,4 @@
-package problems.arrays;
+package problems.string;
 
 public class StringToInt {
 

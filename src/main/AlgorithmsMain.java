@@ -2,28 +2,34 @@ package main;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import problems.arrays.Duplicates;
 
 public class AlgorithmsMain {
 
 	public static void main(String args[]) throws Exception {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-		int T = Integer.parseInt(br.readLine());
-		for (int i = 0; i < T; i++) {
-			String S1 = br.readLine();
-			String S2 = br.readLine();		
-			Set<String> permutationS1 = permutationFinder(S1);
-			Set<String> permutationS2 = permutationFinder(S2);
-			for(String str:permutationS1) {
-				if(permutationS2.contains(str)) {
-					System.out.println("YES");	
-				}else {
-					System.out.println("NO");
-				}
-			}
-		}
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//
+//		int T = Integer.parseInt(br.readLine());
+//		for (int i = 0; i < T; i++) {
+//			String S1 = br.readLine();
+//			String S2 = br.readLine();		
+//			Set<String> permutationS1 = permutationFinder(S1);
+//			Set<String> permutationS2 = permutationFinder(S2);
+//			for(String str:permutationS1) {
+//				if(permutationS2.contains(str)) {
+//					System.out.println("YES");	
+//				}else {
+//					System.out.println("NO");
+//				}
+//			}
+//		}
+		
+		int[] a = new int[] { -1, -1, 3, 2, 2 };
+		System.out.println(Arrays.toString(new Duplicates().getDuplicatesArray(a)));
 	}
 
 	public static Set<String> permutationFinder(String str) {
