@@ -26,7 +26,7 @@ public class Duplicates {
 				duplicateArray[i] = nonDuplicateElement;
 				System.out.println("duplicateArray[i]:" + duplicateArray[i]);
 			}
-			
+
 		}
 		return duplicateArray;
 	}
@@ -59,6 +59,5 @@ public class Duplicates {
 	public void print(int[] array) {
 
 	}
-	
-	
+
 }
