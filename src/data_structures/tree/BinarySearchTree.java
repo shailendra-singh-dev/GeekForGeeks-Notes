@@ -22,13 +22,13 @@ public class BinarySearchTree {
 			if (rootNode.left == null) {
 				rootNode.left = treeNode;
 			} else {
-				insertIterative(rootNode.left, treeNode);
+				insertWithRecursion(rootNode.left, treeNode);
 			}
 		} else if (treeNode.getData() > rootNode.getData()) {
 			if (rootNode.right == null) {
 				rootNode.right = treeNode;
 			} else {
-				insertIterative(rootNode.right, treeNode);
+				insertWithRecursion(rootNode.right, treeNode);
 			}
 		}
 	}

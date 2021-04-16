@@ -6,14 +6,18 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import data_structures.arrays.BinarySearch;
+import data_structures.tree.BinarySearchTree;
+import data_structures.tree.BinaryTree;
 import problems.arrays.Duplicates;
 import problems.string.ContainsIgnoreCase;
 
 public class AlgorithmsMain {
 
 	public static void main(String args[]) throws Exception {
-		ContainsIgnoreCase.test();
+	  new BinarySearchTree().test();
 	}
+	
 
 	public static Set<String> permutationFinder(String str) {
         Set<String> perm = new HashSet<String>();

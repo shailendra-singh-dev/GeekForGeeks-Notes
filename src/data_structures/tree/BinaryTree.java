@@ -2,6 +2,7 @@ package data_structures.tree;
 
 import java.util.Queue;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 import data_structures.TreeNode;
 
@@ -51,8 +52,7 @@ public class BinaryTree {
 
 	public void printTree() {
 		constructTree();
-		Queue<TreeNode> queue = new LinkedList<TreeNode>();
-		queue.offer(getRootNode());
+		Queue<TreeNode> queue = new PriorityQueue<TreeNode>();
 
 		while (!queue.isEmpty()) {
 			TreeNode node = queue.poll();
