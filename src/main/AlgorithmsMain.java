@@ -1,23 +1,15 @@
 package main;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import data_structures.arrays.BinarySearch;
-import data_structures.tree.BinarySearchTree;
-import data_structures.tree.BinaryTree;
-import problems.arrays.Duplicates;
-import problems.string.ContainsIgnoreCase;
+import problems.arrays.FinalCellInMatrixAfterMovements;
 
 public class AlgorithmsMain {
 
 	public static void main(String args[]) throws Exception {
-	  new BinarySearchTree().test();
+		new FinalCellInMatrixAfterMovements().test();
 	}
-	
 
 	public static Set<String> permutationFinder(String str) {
         Set<String> perm = new HashSet<String>();

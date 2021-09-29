@@ -5,13 +5,18 @@ import java.util.Arrays;
 public class QuickSort {
 
 	private static int[] quickSort(int[] array, int low, int high) {
-		if (low >= high || high > array.length || array.length == 0) {
-			return null;
-		}
+		//check for empty or null array
+        if (array == null || array.length == 0){
+            return null;
+        }
+         
+        if (low >= high){
+            return null;
+        }
 
 		// pick the pivot
 		int middle = low + (high - low) / 2;
-		 int pivot = array[middle];
+		int pivot = array[middle];
 		 //int pivot = array[low];
          //int pivot = array[high];
 

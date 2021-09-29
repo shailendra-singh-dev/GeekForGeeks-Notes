@@ -21,7 +21,6 @@ public class MergeSort {
 	private static void mergeSort(int[] array, int left, int right) {
 
 		if (left < right) {
-
 			// split the array into 2
 			int center = (left + right) / 2;
 
@@ -47,8 +46,7 @@ public class MergeSort {
 		int resultArrayBegin = 0;
 
 		// Find the smallest element in both these array and add it to the
-		// result
-		// array i.e you may have a array of the form [1,5] [2,4]
+		// result array i.e you may have a array of the form [1,5] [2,4]
 		// We need to sort the above as [1,2,4,5]
 		while (leftArrayBegin <= leftArrayEnd
 				&& rightArrayBegin <= rightArrayEnd) {

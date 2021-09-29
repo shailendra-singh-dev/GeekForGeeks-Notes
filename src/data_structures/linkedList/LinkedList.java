@@ -141,16 +141,16 @@ public class LinkedList {
 		if (head == null) {
 			System.out.println("Error ,List is empty");
 		}
-		Node previousNode = null;
+//		Node previousNode = null;
 		Node current = head;
 		while (current.next != null && current.data != node.data) {
-			previousNode = current;
+//			previousNode = current;
 			current = current.next;
 		}
-		previousNode.next = node.next;
+//		previousNode.next = node.next;
 	}
 
-	public void test() {
+	public  void test() {
 		Node headNode = new Node(9);
 		Node node1 = new Node(10);
 		Node node2 = new Node(2);
@@ -164,7 +164,7 @@ public class LinkedList {
 		node3.next = node4;
 		node4.next = null;
 
-		printList(headNode);
+		printList(head);
 		//
 		// Node addAtFrontNode = new Node(-1);
 		// addAtFront(addAtFrontNode);
@@ -178,8 +178,9 @@ public class LinkedList {
 		// insertAtEnd(insertAtEndNode);
 		// System.out.println("" + this);
 		//
-		// deleteNode(node2);
-		// System.out.println("" + this);
+		 deleteNode(node2);
+		 printList(head);
+//		 System.out.println("" + this);
 
 		// int count = getListCount();
 		// int count = getListCountRecursive(head);
@@ -211,8 +212,8 @@ public class LinkedList {
 		// Node mergedListNode = mergeSortUsingRecursion(head);
 		// printList(mergedListNode);
 
-		Node reverseKNodes = reverseEveryKNodes( 2);
-		printList(reverseKNodes);
+//		Node reverseKNodes = reverseEveryKNodes( 2);
+//		printList(reverseKNodes);
 	}
 
 	private void deleteFirst() {
