@@ -8,7 +8,26 @@ public class ContigousMaxSubArray {
 	private int max_so_far = Integer.MIN_VALUE;
 
 	//https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
+
 	
+	
+	 public int solutionA(int[] A) {
+         // initial setting A[0]
+       int currentSum = Integer.MIN_VALUE + 1000001;
+       int maxSum = Integer.MIN_VALUE + 1000001;
+
+       // note: for i=0, it will return A[0] (also for "one element" cases)  
+          
+       for(int a :A){
+            currentSum = Math.max(currentSum +a , a); // <--- key point~!!            
+            maxSum = Math.max(maxSum, currentSum); // update the max (be careful)
+           
+       }
+       
+       return maxSum; // can be used for "all negative" cases 
+   }
+
+	 
 	private int getMaxSumV1(int[] a) {
 		if (null == a || a.length == 0) {
 			return -1;
