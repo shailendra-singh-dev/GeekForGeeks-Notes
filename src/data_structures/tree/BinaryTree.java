@@ -51,24 +51,6 @@ public class BinaryTree {
 
 	}
 
-	public void printTree() {
-		constructTree();
-		Queue<TreeNode> queue = new PriorityQueue<TreeNode>();
-
-		while (!queue.isEmpty()) {
-			TreeNode node = queue.poll();
-			if (null == node) {
-				return;
-			}
-			System.out.println(node);
-			if (node.getLeftNode() != null) {
-				queue.offer(node.getLeftNode());
-			}
-			if (node.getRightNode() != null) {
-				queue.offer(node.getRightNode());
-			}
-		}
-	}	
 	
 	/**
 	 * https://github.com/eugenp/tutorials/tree/master/algorithms-searching

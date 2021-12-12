@@ -101,9 +101,42 @@ public class PrintUniqueRowsInMatrix {
                 {1, 0, 1, 0, 0}
                }; 
 		PrintUniqueRowsInMatrix printUniqueRowsInMatrix= new PrintUniqueRowsInMatrix();
-		printUniqueRowsInMatrix.uniqueRowsV1(M);
-		System.out.println("---------------------------------");
-		printUniqueRowsInMatrix.uniqueRowsV2(M);
+		printUniqueRowsInMatrix.uniqueRowsV3(M);
+//		System.out.println("---------------------------------");
+//		printUniqueRowsInMatrix.uniqueRowsV2(M);
+	}
+	
+	private void uniqueRowsV3(int[][] M) {
+		boolean[] array=new boolean[M.length];
+		for(int i=0;i<M.length-1;i++) {
+			for(int j=i+1;j<M.length;j++) {
+				if(i != j && equal(M[i],M[j])) {
+					array[i] = true;
+				}
+			}
+		}
+		for(int i=0;i<array.length;i++) {
+			System.out.println();
+			if(!array[i]) {
+				printRow(M[i]);
+			}
+		}
+	}
+
+
+	private void printRow(int[] a) {
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(a[i] +" ");
+		}
+	}
+
+	private boolean equal(int[] a1, int[] a2) {
+		for(int i=0;i < a1.length;i++) {
+			if(a1[i] != a2[i]) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

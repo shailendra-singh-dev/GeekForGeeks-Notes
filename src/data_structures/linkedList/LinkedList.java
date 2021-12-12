@@ -5,13 +5,13 @@ import data_structures.Node;
 public class LinkedList {
 	// reference to the head node.
 	private Node head;
-	private int listCount;
+	private int size;
 
 	// LinkedList constructor
 	public LinkedList() {
 		// this is an empty list, so the reference to the head node
 		// is set to a new node with no data
-		listCount = 0;
+		size = 0;
 	}
 
 	public void setHead(Node node) {
@@ -31,7 +31,7 @@ public class LinkedList {
 		}
 		// the last node's "next" reference set to our new node
 		current.next = node;
-		listCount++;// increment the number of elements variable
+		size++;// increment the number of elements variable
 	}
 
 	public void add(int index, Node node) {
@@ -49,7 +49,7 @@ public class LinkedList {
 		// reference
 		// now set this node's next-node reference to the new node
 		current.next = node;
-		listCount++;// increment the number of elements variable
+		size++;// increment the number of elements variable
 	}
 
 	public Node get(int index) {
@@ -78,13 +78,13 @@ public class LinkedList {
 			current = current.next;
 		}
 		current.next = current.next.next;
-		listCount--; // decrement the number of elements variable
+		size--; // decrement the number of elements variable
 		return true;
 	}
 
 	public int size() {
 		// post: returns the number of elements in this list.
-		return listCount;
+		return size;
 	}
 
 	public String toString() {
