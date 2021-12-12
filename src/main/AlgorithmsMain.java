@@ -3,17 +3,13 @@ package main;
 import java.util.HashSet;
 import java.util.Set;
 
-import data_structures.tree.BinaryTree;
-import problems.arrays.Fibonacci;
-import problems.arrays.FinalCellInMatrixAfterMovements;
-import problems.arrays.PrintUniqueRowsInMatrix;
-import problems.string.PrintOrderedSequence;
-import problems.tree.MaximumWidth;
+import problems.tree.DFS;
+
 
 public class AlgorithmsMain {
 
 	public static void main(String args[]) throws Exception {
-		PrintUniqueRowsInMatrix.test();
+		DFS.test();
 	}
 
 	public static Set<String> permutationFinder(String str) {

@@ -7,7 +7,7 @@ public class PrintOrderedSequence {
 		int[] a2 = { 1, 5, 8, 10 };
 		int[] a3 = { 3, 4, 8 };
 		int[] a4 = { 3, 4, 5, 6, 1021, 1022 };
-		System.out.println(getString(a1));
+		System.out.println(getString(a4));
 	}
 
 	private static String getString(int[] a) {
