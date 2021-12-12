@@ -13,7 +13,7 @@ public class ContigousMaxSubArray {
 	private int max_ending_here = 0;
 	private int max_so_far = Integer.MIN_VALUE;
 
-	private int getMaxSumV1(int[] a) {
+    private int getMaxSumV1(int[] a) {
 		if (null == a || a.length == 0) {
 			return -1;
 		}
