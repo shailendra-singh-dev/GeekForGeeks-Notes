@@ -3,13 +3,13 @@ package main;
 import java.util.HashSet;
 import java.util.Set;
 
-import problems.tree.DFS;
-
+import data_structures.arrays.MergeSort;
+import problems.graph.BFSUsingHashSet;
 
 public class AlgorithmsMain {
 
 	public static void main(String args[]) throws Exception {
-		DFS.test();
+		 MergeSort.sort(new int[] {1, 3, 5, 7, 0, 2, 6, 8, 9});
 	}
 
 	public static Set<String> permutationFinder(String str) {

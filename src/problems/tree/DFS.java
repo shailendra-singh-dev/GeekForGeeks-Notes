@@ -8,6 +8,12 @@ import java.util.Stack;
 import data_structures.TreeNode;
 
 /**
+ * https://www.baeldung.com/java-depth-first-search
+ * https://leetcode.com/tag/breadth-first-search/
+ * https://leetcode.com/tag/depth-first-search/
+ */
+
+/**
  * https://leetcode.com/discuss/study-guide/1072548/A-Beginners-guid-to-BFS-and-DFS
  * @author ShSingh
  *
@@ -87,11 +93,11 @@ public class DFS {
 		
 //		preOrderTraversalWithoutRecursion(root);
 //		System.out.println();
-//		inOrderTraversalWithoutRecursion(root);
+		inOrderTraversalWithoutRecursion(root);
 //		System.out.println();
-		postOrderTraversalWithRecursion(root);
-		System.out.println();
-		postOrderTraversalWithoutRecursion(root);
+//		postOrderTraversalWithRecursion(root);
+//		System.out.println();
+//		postOrderTraversalWithoutRecursion(root);
 	}
 	
 	private static void preOrderTraversalWithRecursion(final TreeNode root) {

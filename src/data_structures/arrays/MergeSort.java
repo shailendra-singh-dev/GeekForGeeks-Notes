@@ -2,10 +2,15 @@ package data_structures.arrays;
 
 import java.util.Arrays;
 
+/**
+ * https://takeuforward.org/data-structure/merge-sort-algorithm/
+ * @author ssingh42
+ *
+ */
 public class MergeSort {
 
 	public static void sort(int[] array) {
-        mergeSortV2(array, 0, array.length - 1);
+        mergeSort(array, 0, array.length - 1);
     }
 	
 	
@@ -69,12 +74,13 @@ public class MergeSort {
 			resultArray[resultArrayBegin++] = array[rightArrayBegin++];
 		}
 
-		System.out.print("rightArrayEnd:" + rightArrayEnd + ",numElements:"
-				+ numElements);
+		System.out.println("resultArray:" + Arrays.toString(resultArray));
+//		System.out.print("rightArrayEnd:" + rightArrayEnd + ",numElements:"	+ numElements);
 		// Copy resultArray back to the main array
 		for (int i = numElements - 1; i >= 0; i--, rightArrayEnd--) {
 			array[rightArrayEnd] = resultArray[i];
 		}
+		System.out.println("array:" +Arrays.toString(array));
 
 	}
 

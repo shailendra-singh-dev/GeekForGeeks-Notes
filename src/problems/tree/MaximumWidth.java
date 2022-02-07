@@ -1,9 +1,9 @@
 package problems.tree;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 import data_structures.TreeNode;
-import problems.concurrency.Queue;
 
 /**
  * https://www.geeksforgeeks.org/maximum-width-of-a-binary-tree/
@@ -42,7 +42,7 @@ public class MaximumWidth {
 	}
 	
 	private static int getMaxWidth(TreeNode root) {
-		java.util.Queue<TreeNode> queue = new LinkedList();
+		Queue<TreeNode> queue = new LinkedList<TreeNode>();
 		queue.add(root);
 		
 		int max = 0;
